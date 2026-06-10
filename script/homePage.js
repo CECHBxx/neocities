@@ -2,7 +2,7 @@ import articleListArray from "./data.js";
 import cookies from "./script.js";
 
 let currentView = "list-view";
-const backloggdURL = "scph10000";
+const backloggdURL = "scph1001";
 const backloggdLinkStart = `https://backloggd.com/u/${backloggdURL}/review`;
 
 const articleList = document.querySelector("#article-list");

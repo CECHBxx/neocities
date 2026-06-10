@@ -19,7 +19,7 @@ class LeftSidebar extends HTMLElement {
                             </div>
                             <div class="left-bottom-elements">
                                 <div class="left-sidebar-lower-buttons button-group">
-                                    <a-tab href="https://backloggd.com/u/scph10000/" class="single-button single-button-wide box-shadow">
+                                    <a-tab href="https://backloggd.com/u/scph1001/" class="single-button single-button-wide box-shadow">
                                         <div class="color-strip"></div>
                                         <div class="button-text"><p>Backloggd</p></div>
                                     </a-tab>  
