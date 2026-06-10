@@ -1,11 +1,11 @@
 let articleListArray = 
 [
     /* put most recent articles at the top */
-    // {
-    //     title: "Who's Lila",
-    //     createdDate: "05/25/26",
-    //     type: "post",
-    // },
+    {
+        title: "Who's Lila",
+        createdDate: "06/01/26",
+        type: "post",
+    },
     {
         title: "Kaeru no Tame ni Kane wa Naru",
         createdDate: "05/29/26",
