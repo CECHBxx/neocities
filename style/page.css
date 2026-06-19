@@ -179,24 +179,18 @@ body#article {
     gap: 2rem;
     height: 100%;
     width: 100%;
+
+    align-items: center;
 }
 
-    .two-column .text-section {
-        
+    .two-column .text-section-no-margin {
+        /* max-width: 65%; */
     }
 
-.two-column div {
-    width: 100%;
-    height: 100%;
-}
-
-.two-column img {
-    width: 100%;
-}
-
-.two-column .text-section-no-margin {
-    width: 100%;
-}
+    .two-column img {
+        min-width: 40%;
+        width: 100%;
+    }
 
     @media screen and (max-width: 1000px) {
         .two-column  {

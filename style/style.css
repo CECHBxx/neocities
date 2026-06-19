@@ -129,7 +129,7 @@ h3 {
     color: var(--dark-text);
 }
 
-p, span, i, li {
+p, span, i, li, img {
     line-height: var(--line-height);
     font-size: var(--p-text-size);
     font-family: "Roboto";
