@@ -6,7 +6,7 @@
         <title>scph1001</title>
 
         <link rel="stylesheet" href="./style/style.css" />
-        <link rel="stylesheet" href="./style/homePage.css" />
+        <link rel="stylesheet" href="./style/home.css" />
         <link rel="icon" type="image/x-icon" href="./assets/jackfrost.png">
         
         <script type="module" src="./script/components.js" defer></script>
@@ -14,40 +14,37 @@
         <script type="module" src="./script/homePage.js" defer></script>
     </head>
 
-    <body>
-        <div id="home-page-elements" class="page-elements">
-            <left-sidebar class="page-container" rootPath="." sidebarImage="./assets/tifa.png"></left-sidebar>
+    <body id="home-page">
+        <left-sidebar rootPath="." sidebarImage="./assets/tifa.png"></left-sidebar>
+        
+        <main>
+            <img id="mobile-image" src="./assets/jackfrost.png" alt="An image of Jack Frost from Shin Megami Tensei. He is a cartoon snowman. He has a blue hat with pointed ends which look like horns. The hat goes around his entire face and has a trim near his neck with little bells. The image has a transparent background, a blue-green duotone effect, and a halftone effect. Jack frost is drawn in a cartoon style and he is sitting on the ground.">
             
-            <main id="home-content" class="main-content page-container">
+            <div class="article-heading">
+                <h1>POSTS</h1>
+            </div>
 
-                <img id="mobile-image" src="./assets/jackfrost.png" alt="An image of Jack Frost from Shin Megami Tensei. He is a cartoon snowman. He has a blue hat with pointed ends which look like horns. The hat goes around his entire face and has a trim near his neck with little bells. The image has a transparent background, a blue-green duotone effect, and a halftone effect. Jack frost is drawn in a cartoon style and he is sitting on the ground.">
-                
-                <div class="article-heading">
-                    <h1>POSTS</h1>
+            <div id="article-list"> </div>
+        </main>
+
+        <aside>
+            
+            <div id="right-top-elements">
+                <div class="toggle-button toggle-horizontal box-shadow">
+                    <button id="list-option" class="view-toggle"><div class="button-text">List</div></button>
+                    <button id="grid-option" class="view-toggle"><div class="button-text">Grid</div></button>
                 </div>
 
-                <div id="article-list"> </div>
-            </main>
-
-            <aside id="right-sidebar" class="page-container">
-                
-                <div id="right-top-elements">
-                    <div class="toggle-button toggle-horizontal box-shadow">
-                        <button id="list-option" class="view-toggle"><div class="button-text">List</div></button>
-                        <button id="grid-option" class="view-toggle"><div class="button-text">Grid</div></button>
-                    </div>
-
-                    <!-- <a href="/" class="single-button single-button-wide box-shadow">
-                        <div class="color-strip"></div>
-                        <div class="button-text">Search</div>
-                    </a> -->
-                </div>
-                <div id="right-bottom-elements">
-                    <img src="./assets/aiai.png" alt="An image of AiAi from Super Monkey Ball. He is a monkey with large ears and pacman type cartoon eyes. The image has a transparent background, a blue-green duotone effect, and a halftone effect. AiAi is currently fishing, he has a large fish on the line close to his body. He is wearing a hat and a jacket.">
-                    <img src="./assets/jackfrost.png" alt="An image of Jack Frost from Shin Megami Tensei. He is a cartoon snowman. He has a blue hat with pointed ends which look like horns. The hat goes around his entire face and has a trim near his neck with little bells. The image has a transparent background, a blue-green duotone effect, and a halftone effect. Jack frost is drawn in a cartoon style and he is sitting on the ground.">
-                </div>
-            </aside>
-        </div>
+                <!-- <a href="/" class="single-button single-button-wide box-shadow">
+                    <div class="color-strip"></div>
+                    <div class="button-text">Search</div>
+                </a> -->
+            </div>
+            <div id="right-bottom-elements">
+                <img src="./assets/aiai.png" alt="An image of AiAi from Super Monkey Ball. He is a monkey with large ears and pacman type cartoon eyes. The image has a transparent background, a blue-green duotone effect, and a halftone effect. AiAi is currently fishing, he has a large fish on the line close to his body. He is wearing a hat and a jacket.">
+                <img src="./assets/jackfrost.png" alt="An image of Jack Frost from Shin Megami Tensei. He is a cartoon snowman. He has a blue hat with pointed ends which look like horns. The hat goes around his entire face and has a trim near his neck with little bells. The image has a transparent background, a blue-green duotone effect, and a halftone effect. Jack frost is drawn in a cartoon style and he is sitting on the ground.">
+            </div>
+        </aside>
 
     </body>
 </html>

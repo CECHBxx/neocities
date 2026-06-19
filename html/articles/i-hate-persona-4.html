@@ -7,16 +7,15 @@
 
     <link rel="icon" type="image/x-icon" href="../../assets/jackfrost.png">
     <link rel="stylesheet" href="../../style/style.css" />
-    <link rel="stylesheet" href="../../style/mainContent.css" />
+    <link rel="stylesheet" href="../../style/page.css" />
     <script type="module" src="../../script/components.js" defer></script>
     <script type="module" src="../../script/script.js" defer></script>
     </head>
 
-    <body>
-        <div class="page-elements">
-            <left-sidebar class="page-container left-sidebar" rootPath="../.."></left-sidebar>
+    <body id="article">
+            <left-sidebar rootPath="../.."></left-sidebar>
 
-            <div id="review-content">
+            <main>
 
                 <div class="article-header">
                     <h1 id="article-title">I Hate Persona 4</h1>
@@ -44,7 +43,7 @@
                     </div>
                 </div>
 
-                <div id="main-review-content" class="spoilers">
+                <main id="main-review-content" class="spoilers">
 
                     <div class="text-section">
                         <h2 id="kanji-section">KANJI</h2>
@@ -529,9 +528,7 @@
                     </div>
 
                     <a href="#" class="back-to-top"><h4>^</h4></a>
-                </div>
-            </div>
-        </div>
-
+                </main>
+            </main>
     </body>
 </html>

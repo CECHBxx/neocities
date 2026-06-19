@@ -1,0 +1,226 @@
+#home-page main {
+    max-height: calc(95vh - var(--margin-value));
+    width: var(--middle-page-width);
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+    @media screen and (max-width: 1000px) {
+        #home-page main {
+            max-height: unset;
+            padding: 0;
+        }
+    }
+ 
+    #home-page main #mobile-image {
+        display: none;
+    }
+
+        @media screen and (max-width: 550px) {
+            #home-page main #mobile-image {
+                display: block;
+                max-height: 40vh;
+                object-fit: contain;
+                margin-top: 2rem;
+            }
+        }
+
+    #home-page main .article-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        padding-right: 3.25rem;
+    }
+
+        #home-page main .article-heading .toggle-button {
+            display: none;
+            height: 3rem;
+            width: 20%;
+        }
+
+            #home-page main .article-heading .toggle-button button {
+                height: 100%;
+            }
+
+    #home-page main #article-list {
+        height: 100%;
+        overflow-y: auto;
+        padding-right: 2rem;
+    }
+
+        #home-page main #article-list .article-preview {
+            text-decoration: none;
+            min-height: 21%;
+            width: 100%;
+        }
+
+            #home-page main #article-list .article-preview .article-tab {
+                background-color: rgba(0, 0, 0, 0.25);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-blend-mode: overlay;
+                background-position: center;
+
+                display: flex;
+                padding: 0.5rem;
+
+                box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+                height: 100%;
+
+                transition: background-color var(--fade-time);
+            }
+
+            .accessible #home-page main #article-list .article-preview .article-tab {
+                background-color: rgba(0, 0, 0, 0.65);
+            }
+
+                .accessible #home-page main #article-list .article-preview .article-tab .article-title {
+                    font-size: var(--article-title-tab-size); 
+                    opacity: 1;
+                }
+
+                .accessible #home-page main #article-list .article-preview .article-tab:hover {
+                    background-color: rgba(0, 0, 0, 0.90);
+                }
+
+                #home-page main #article-list .article-preview .article-tab:hover {
+                    background-color: rgba(0, 0, 0, 0.60);
+                }
+                
+                #home-page main #article-list .article-preview .article-tab .article-title {
+                    font-family: "Orbitron";
+                    color: var(--background);
+                    font-size: var(--article-title-tab-size); 
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    transition: opacity var(--fade-time);
+                    opacity: 0;
+                }
+                
+                    #home-page main #article-list .article-preview .article-tab:hover .article-title {
+                        opacity: 1;
+                    }
+
+            #home-page main #article-list .article-preview .article-date {
+                display: grid;
+                justify-content: space-between;
+                grid-template-columns: 1fr 1fr;
+                align-content: end;
+                row-gap: 0rem;
+            }
+
+                #home-page main #article-list .article-preview .article-date p {
+                    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+                    text-align: center;
+
+                    font-size: var(--article-date-size);
+                    font-weight: 400;
+                    font-family: "Orbitron";
+                    margin: 0;
+                }
+
+/* ARTICLE LIST VIEW ============================================================================================================================================== */
+
+#home-page main .list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
+}
+
+    #home-page main .list-view .article-preview {
+        display: flex;
+        gap: 1.25rem;
+    }
+
+    #home-page main .list-view .article-preview .article-tab {
+        width: 95%;
+    }
+
+    #home-page main .list-view .article-preview .article-tab .article-title {
+        padding: 1rem;
+    }
+
+/* ARTICLE GRID VIEW ============================================================================================================================================== */
+
+#home-page main .grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    gap: 2.5rem;
+    padding-right: 2rem;
+
+    grid-auto-rows: 30%;
+}
+
+    #home-page main .grid-view .article-preview {
+        color: var(--background);
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+
+        position: relative;
+    }
+
+        #home-page main .grid-view .article-preview .article-tab {
+            height: 100%;
+            width: 100%;
+            box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+        }
+
+        #home-page main .grid-view .article-preview .article-date {
+            align-self: flex-end;
+
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+        }
+
+            #home-page main .grid-view .article-preview .article-date p {
+                color: var(--background);
+            }
+
+@media screen and (max-width: 1000px) {
+    * {
+        --article-title-tab-size: 1rem;
+        --article-date-size: 1rem;
+    }
+
+    #home-page-elements, .page-container {
+        margin: 0;
+    }
+                
+        #home-page-elements #home-page main {
+            padding: 0 2rem;
+        }
+
+
+            #home-page-elements #home-page main #article-list {
+                overflow-y: unset;
+                padding: 0;
+
+                margin-bottom: 1rem;
+
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+                #home-page-elements #home-page main #article-list .article-preview {
+                    height: 5rem;
+                }
+
+                    #home-page-elements #home-page main #article-list .article-preview .article-tab {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                    }
+
+                    #home-page-elements #home-page main #article-list .article-preview .article-date p {
+                        line-height: unset;
+                    }
+}
