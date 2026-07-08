@@ -27,7 +27,7 @@ const switchView = (current, next, type) => {
         currentStyling = type;
 
         document.body.classList.add(currentStyling);
-        document.cookie = `style-preference=${type};`;
+        document.cookie = `style-preference=${type};path=/`;
     }
 }
 

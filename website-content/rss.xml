@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
     <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-    <title>SCPH1001</title>
-    <link>https://scph1001.neocities.org/</link>
-    <description>Hi</description>
+        <title>SCPH1001</title>
+        <link>https://scph1001.neocities.org/</link>
+        <description>Hi</description>
 
+        <lastBuildDate>Wed, 08 Jul 2026 01:39:58 GMT</lastBuildDate>
 
-    <atom:link href="https://scph1001.neocities.org/" rel="self" type="application/rss+xml" />
+        <atom:link href="https://scph1001.neocities.org/" rel="self" type="application/rss+xml" />
 
-    <item>
-        <title>new review: resident evil 1996</title>
-        <link>https://scph1001.neocities.org/html/articles/resident-evil</link>
-        <guid>https://scph1001.neocities.org/html/articles/resident-evil</guid>
-        <pubDate>Fri, 19 Jun 2026 21:13:06 GMT</pubDate>
-        <description>resident evil. i also did alot of clean up. and made this RSS feed.</description>
-        <content:encoded><![CDATA[
+        <item>
+            <title>CSS fixes and deltarune chapter 5 review</title>
+            <link>https://scph1001.neocities.org/html/articles/deltarune-chapter-5</link>
+            <guid>https://scph1001.neocities.org/html/articles/deltarune-chapter-5</guid>
+            <pubDate>Wed, 08 Jul 2026 01:39:58 GMT</pubDate>
+            <description>DELTARUNE!!!!!!!!!!!! and general clean up. the last update i made messed up the mobile view without me realizing- sorry. im chipping away at making the mobile view look better as well.</description>
+            <content:encoded><![CDATA[
 
-        ]]></content:encoded>
-    </item>
+            ]]></content:encoded>
+        </item>
+        <item>
+            <title>new review: resident evil 1996</title>
+            <link>https://scph1001.neocities.org/html/articles/resident-evil</link>
+            <guid>https://scph1001.neocities.org/html/articles/resident-evil</guid>
+            <pubDate>Fri, 19 Jun 2026 21:13:06 GMT</pubDate>
+            <description>resident evil. i also did alot of clean up. and made this RSS feed.</description>
+            <content:encoded><![CDATA[
+
+            ]]></content:encoded>
+        </item>
 
     </channel>
 </rss>

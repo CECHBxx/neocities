@@ -9,9 +9,6 @@
 
     /* ELEMENT SIZING */
 
-    --left-page-width: 40%;
-    --max-left-page-width: 440px;
-    --min-left-page-width: 400px;
     --middle-page-width: 100%;
     --right-sidebar-width: 15%;
 
@@ -37,10 +34,10 @@
     --h2-text-size: 1.75rem;
     --h3-text-size: 1.50rem;
     --button-text-size: 1.25rem;
-    --p-text-size: 1.25rem;
+    --p-text-size: 1rem;
     --article-title-tab-size: 2.5rem;
     --article-date-size: 1.25rem;
-    --line-height: 2.25rem;
+    --line-height: 2rem;
 
     scrollbar-color: var(--primary-accent) var(--dark-text);
 }
@@ -86,8 +83,6 @@
 
 .button-text {
     text-align: center;
-    align-items: center;
-    justify-content: center;
     font-size: var(--button-text-size);
     font-weight: 400;
 }
@@ -180,8 +175,10 @@ li {
 }
 
 .hover-note {
-    font-size: 1rem;
+    font-size: 0.75rem;
     text-decoration: underline 0.10rem var(--primary-accent);
+    vertical-align: bottom;
+    line-height: 1.5rem;
 }
 
 /* PAGE SET UP ====================================================================================================================================================== */
@@ -196,35 +193,6 @@ body {
     margin: var(--margin-value);
 }
 
-    body#home-page {
-        align-items: center;
-        height: 90vh;
-    }
-
-    @media screen and (max-width: 1000px) {
-        .page-elements {
-            flex-direction: column;
-            gap: unset;
-            margin: 0;
-        }
-    }
-
-    @media screen and (max-width: 1000px) {
-        body#home-page {
-            height: unset;
-            overflow-y: auto;
-        }
-    }
-
-    @media screen and (max-width: 550px) {
-        body#home-page main #article-list .article-preview {
-            height: 4rem;
-        }
-    }
-
-    body left-sidebar, body main, body aside {
-        height: 90vh;
-    }
 
 /* LEFT SIDEBAR =================================================================================================================================================== */
 
@@ -239,9 +207,7 @@ left-sidebar {
 
     background-image: url(../assets/sidebar-background.png);
 
-    width: var(--left-page-width);
-    max-width: var(--max-left-page-width);
-    min-width: var(--min-left-page-width);
+    min-width: 440px;
 }
 
     left-sidebar .left-top-elements {
@@ -272,72 +238,6 @@ left-sidebar {
             width: 35%;
             margin-right: 2rem;
         } 
-
-    @media screen and (max-width: 1000px) {
-        .page-container {
-            height: unset;
-        }
-
-        left-sidebar {
-            background-image: none;
-            background-color: var(--dark-text);
-            position: sticky;
-            top: 0;
-            height: 1.5rem;
-            width: 100%;
-            --max-left-page-width: 100%;
-
-            padding: 1rem 2rem;
-
-            flex-direction: row;
-            justify-content: unset;
-            gap: 2rem;
-        }
-
-            left-sidebar .left-top-elements .left-sidebar-upper-buttons, left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-                flex-direction: row; 
-                width: 100%;
-                margin: 0;
-            }
- 
-            left-sidebar .left-bottom-elements {
-                width: 100%;
-            }
-
-                left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-                    justify-content: space-between;
-                }
-    }
-
-    @media screen and (max-width: 800px) {
-        left-sidebar {
-            padding: 0rem 1rem;
-            gap: 0;
-        }
-
-            left-sidebar .left-top-elements, left-sidebar .left-top-elements .button-group {
-                gap: 0;
-            }
-    }
-
-    @media screen and (max-width: 450px) {
-        left-sidebar {
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
-        }
-
-            left-sidebar .left-bottom-elements {
-                width: unset;
-            }
-            
-                left-sidebar .left-bottom-elements .single-button {
-                    display: none;
-                }
-    }
         
 /* RIGHT SIDEBAR =========================================================================================================================================== */
 
@@ -349,12 +249,6 @@ aside {
 
     width: var(--right-sidebar-width);
 }
-
-    @media screen and (max-width: 1600px) {
-        aside {
-            display: none;
-        }
-    }
 
     aside #right-top-elements {
         display: flex;
@@ -478,41 +372,6 @@ sidebar-directory {
         height: 5rem;
     }
 
-    @media screen and (max-width: 1000px) {
-        left-sidebar .toggle-button {
-            flex-direction: row;
-            box-shadow: none;
-            width: unset;
-            gap: 1rem;
-        }
-
-            left-sidebar .toggle-button button {
-                height: unset;
-                width: 100%;
-                background-color: transparent;
-                color: var(--background);
-            }
-
-                left-sidebar .toggle-button .selected-toggle {
-                    background-color: transparent;
-                    text-decoration: underline 0.15rem var(--secondary-accent);
-                }
-                
-                left-sidebar .toggle-button button:hover, left-sidebar .single-button:hover {
-                    color: var(--dark-text);
-                    background-color: var(--secondary-accent);
-                }
-
-                    left-sidebar .single-button:hover .button-text p {
-                        color: var(--dark-text);
-                    }
-                
-                left-sidebar .toggle-button button .button-text {
-                    color: var(--background);
-                    text-transform: uppercase;
-                }
-    }
-
 /* LINK BUTTONS ================================================================================================================================  */
 
 .single-button {
@@ -578,4 +437,136 @@ sidebar-directory {
 
 .text-shadow {
     text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+}
+
+/* MEDIA QUERIES ========================================================================================================================= */
+@media screen and (max-width: 1600px) {
+    aside {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    body left-sidebar, body main, body aside {
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        align-items: center;
+        overflow-y: auto;
+
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0;
+
+        justify-content: unset;
+    }
+
+    #home-page main {
+        --middle-page-width: 95%;
+        max-height: 95%;
+    }
+
+        left-sidebar {
+            background-image: none;
+            background-color: var(--dark-text);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            --max-left-page-width: 100%;
+
+            padding: 1rem 2rem;
+
+            flex-direction: row;
+            justify-content: unset;
+            gap: 2rem;
+
+            z-index: 1;
+        }
+
+            left-sidebar .left-top-elements .left-sidebar-upper-buttons, left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
+                flex-direction: row; 
+                width: 100%;
+                margin: 0;
+            }
+ 
+            left-sidebar .left-bottom-elements {
+                width: 100%;
+            }
+
+                left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
+                    justify-content: space-between;
+                }
+
+        left-sidebar .toggle-button {
+            flex-direction: row;
+            box-shadow: none;
+            width: unset;
+            gap: 1rem;
+        }
+
+            left-sidebar .toggle-button button {
+                height: unset;
+                width: 100%;
+                background-color: transparent;
+                color: var(--background);
+
+                border: none;
+            }
+
+                left-sidebar .toggle-button .selected-toggle {
+                    background-color: transparent;
+                    text-decoration: underline 0.15rem var(--secondary-accent);
+                }
+                
+                left-sidebar .toggle-button button:hover, left-sidebar .single-button:hover {
+                    color: var(--dark-text);
+                    background-color: var(--secondary-accent);
+                }
+
+            left-sidebar .single-button {
+                background-color: unset;
+                border: none;
+            }
+
+                    left-sidebar .single-button:hover .button-text p {
+                        color: var(--dark-text);
+                    }
+                
+                left-sidebar .toggle-button button .button-text {
+                    color: var(--background);
+                    text-transform: uppercase;
+                }
+}
+
+@media screen and (max-width: 800px) {
+    left-sidebar {
+        padding: 0rem 1rem;
+        gap: 0;
+    }
+
+        left-sidebar .left-top-elements, left-sidebar .left-top-elements .button-group {
+            gap: 0;
+        }
+}
+
+@media screen and (max-width: 450px) {
+    left-sidebar {
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+        left-sidebar .left-bottom-elements {
+            width: unset;
+        }
+        
+            left-sidebar .left-bottom-elements .single-button {
+                display: none;
+            }
 }

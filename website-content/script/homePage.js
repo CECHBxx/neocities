@@ -1,7 +1,7 @@
 import articleListArray from "./data.js";
 import cookies from "./script.js";
 
-let currentView = "list-view";
+let currentView = "grid-view";
 const backloggdURL = "scph1001";
 const backloggdLinkStart = `https://backloggd.com/u/${backloggdURL}/review`;
 
@@ -68,10 +68,12 @@ class PostListing {
 }
 
 const setListDefault = (cookieValue) => {
-    if (cookieValue === null || cookieValue === "list") {
-        cookieValue = "list";
+    if (cookieValue === "list") {
         listToggle.classList.add("selected-toggle")
-    } else if (cookieValue === "grid") gridToggle.classList.add("selected-toggle");
+    } else {
+        cookieValue = "grid"
+        gridToggle.classList.add("selected-toggle");
+    }
 
     currentView = `${cookieValue}-view`;
     articleList.classList.add(currentView);

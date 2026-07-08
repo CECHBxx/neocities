@@ -8,25 +8,9 @@
     justify-content: space-between;
 }
 
-    @media screen and (max-width: 1000px) {
-        #home-page main {
-            max-height: unset;
-            padding: 0;
-        }
-    }
- 
     #home-page main #mobile-image {
         display: none;
     }
-
-        @media screen and (max-width: 550px) {
-            #home-page main #mobile-image {
-                display: block;
-                max-height: 40vh;
-                object-fit: contain;
-                margin-top: 2rem;
-            }
-        }
 
     #home-page main .article-heading {
         display: flex;
@@ -59,7 +43,6 @@
         }
 
             #home-page main #article-list .article-preview .article-tab {
-                background-color: rgba(0, 0, 0, 0.25);
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-blend-mode: overlay;
@@ -74,23 +57,14 @@
                 transition: background-color var(--fade-time);
             }
 
-            .accessible #home-page main #article-list .article-preview .article-tab {
-                background-color: rgba(0, 0, 0, 0.65);
-            }
-
-                .accessible #home-page main #article-list .article-preview .article-tab .article-title {
-                    font-size: var(--article-title-tab-size); 
-                    opacity: 1;
+                .default main #article-list .article-preview .article-tab {
+                    background-color: rgba(0, 0, 0, 0.25);
                 }
 
-                .accessible #home-page main #article-list .article-preview .article-tab:hover {
-                    background-color: rgba(0, 0, 0, 0.90);
+                .accessible main #article-list .article-preview .article-tab {
+                    background-color: rgba(0, 0, 0, 0.65);
                 }
 
-                #home-page main #article-list .article-preview .article-tab:hover {
-                    background-color: rgba(0, 0, 0, 0.60);
-                }
-                
                 #home-page main #article-list .article-preview .article-tab .article-title {
                     font-family: "Orbitron";
                     color: var(--background);
@@ -98,7 +72,20 @@
                     font-weight: 500;
                     text-transform: uppercase;
                     transition: opacity var(--fade-time);
-                    opacity: 0;
+                }
+
+                    .default main #article-list .article-preview .article-tab .article-title {
+                        opacity: 0;
+                    }
+
+
+                .accessible main #article-list .article-preview .article-tab .article-title {
+                    font-size: var(--article-title-tab-size); 
+                    opacity: 1;
+                }
+
+                .default main #article-list .article-preview .article-tab:hover {
+                    background-color: rgba(0, 0, 0, 0.60);
                 }
                 
                     #home-page main #article-list .article-preview .article-tab:hover .article-title {
@@ -151,7 +138,7 @@
 #home-page main .grid-view {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-    gap: 2.5rem;
+    gap: 2rem;
     padding-right: 2rem;
 
     grid-auto-rows: 30%;
@@ -184,43 +171,62 @@
                 color: var(--background);
             }
 
+/* default to list view when screen is small enough */
+@media screen and (max-width: 1600px) {
+    #home-page main #article-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
+    }
+
+    #home-page main #article-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
+    }
+}
+
 @media screen and (max-width: 1000px) {
     * {
         --article-title-tab-size: 1rem;
         --article-date-size: 1rem;
     }
 
-    #home-page-elements, .page-container {
-        margin: 0;
+    #home-page main {
+        max-height: unset;
+        padding: 0;
     }
-                
-        #home-page-elements #home-page main {
-            padding: 0 2rem;
+
+    #home-page main #article-list {
+        padding-right: 0;
+    }
+            
+    main #article-list {
+        overflow-y: unset;
+        padding: 0;
+
+        margin-bottom: 1rem;
+
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+        main #article-list .article-preview {
+            height: 10rem;
         }
 
-
-            #home-page-elements #home-page main #article-list {
-                overflow-y: unset;
-                padding: 0;
-
-                margin-bottom: 1rem;
-
-                display: grid;
-                grid-template-columns: 1fr;
+            main #article-list .article-preview .article-tab {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
             }
 
-                #home-page-elements #home-page main #article-list .article-preview {
-                    height: 5rem;
-                }
-
-                    #home-page-elements #home-page main #article-list .article-preview .article-tab {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                    }
-
-                    #home-page-elements #home-page main #article-list .article-preview .article-date p {
-                        line-height: unset;
-                    }
+            main #article-list .article-preview .article-date p {
+                line-height: unset;
+            }
 }

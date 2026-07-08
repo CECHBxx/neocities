@@ -2,6 +2,10 @@ let articleListArray =
 [
     /* put most recent articles at the top */
     {
+        title: "Deltarune Chapter 5",
+        createdDate: "07/07/26",
+    },
+    {
         title: "Resident Evil",
         createdDate: "06/19/26",
     },

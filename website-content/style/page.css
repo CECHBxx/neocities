@@ -21,38 +21,8 @@ left-sidebar {
             padding: 0 1rem;
         }
 
-    @media screen and (max-width: 1250px) {
-        .page-elements {
-            gap: 0;
-        }
-
-        left-sidebar {
-            background-image: url("../assets/tifa_no_background.png");
-            background-position: right;
-            background-size: cover;
-
-            --left-page-width: 40%;
-            --min-left-page-width: 0;
-        }
-
-            .accessible left-sidebar {
-                background-image: none;
-            }
-
-        left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-            width: 100%;
-        }
-    } 
-
-    @media screen and (max-width: 1000px) {
-        left-sidebar {
-            background-image: none;
-            top: 0;
-        }
-
-            left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-                width: 100%;
-            }
+    #article main {
+        flex: 1 1 auto
     }
 
 body#article {
@@ -83,15 +53,10 @@ body#article {
         width: 100%;
     }
 
-        @media screen and (max-width: 1000px) {
-            .article-header .spoiler-options .button-text {
-                font-size: 1rem;
-            }
-        }
-
     .article-header img {
-        height: 100%; width: 100%;
-        max-height: 30vh;
+        height: 100%; 
+        width: 100%;
+        max-height: 40vh;
         object-fit: cover;
     }
     
@@ -113,6 +78,8 @@ body#article {
     flex-direction: column;
     gap: 1rem;
     padding-right: 0.25rem;
+
+    width: 100%;
 }
 
 .text-section {
@@ -124,15 +91,11 @@ body#article {
     }
 
     .text-section img {
+        align-self: center;
         object-fit: contain;
         max-height: 50vh;
         margin: 1rem 0;
-    }
-
-    @media screen and (max-width: 900px) {
-        .text-section {
-            gap: 1rem;
-        }
+        width: 90%;
     }
 
 .image-quote {
@@ -156,21 +119,6 @@ body#article {
         text-align: right;
         }
 
-    @media screen and (max-width: 650px) {
-        .image-quote {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .image-quote img {
-            width: 100%;
-        }
-
-        .image-quote .quote {
-            width: 75%;
-        }
-    }
-
 /* LAYOUTS =========================================================================================================================================== */
 
 .two-column {
@@ -183,19 +131,13 @@ body#article {
     align-items: center;
 }
 
-    .two-column .text-section-no-margin {
-        /* max-width: 65%; */
-    }
+    /* .two-column .text-section-no-margin {
+        max-width: 65%;
+    } */
 
     .two-column img {
         min-width: 40%;
         width: 100%;
-    }
-
-    @media screen and (max-width: 1000px) {
-        .two-column  {
-            flex-direction: column;
-        }
     }
 
 /* DIRECTORY SECTION ================================================================================================================ */
@@ -217,16 +159,6 @@ body#article {
         height: 100%;
     } 
 
-    @media screen and (max-width: 1000px) {
-        .directory-container {
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .directory-container .right {
-            width: 100%;
-        } 
-    }
 
 /* SPOILER STYLING ============================================================================================================================ */
 
@@ -330,3 +262,79 @@ body#article {
     .back-to-top:hover h4 {
         color: var(--dark-text);
     }
+
+/* MEDIA QUERIES ================================================================================================================== */
+
+@media screen and (max-width: 1250px) {
+    left-sidebar {
+        background-image: url("../assets/tifa_no_background.png");
+        background-position: right;
+        background-size: cover;
+
+        min-width: 30%;
+    }
+
+        .accessible left-sidebar {
+            background-image: none;
+        }
+
+    left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
+        width: 100%;
+    }
+
+    .two-column  {
+        flex-direction: column;
+    }
+} 
+
+@media screen and (max-width: 1000px) {
+    left-sidebar {
+        background-image: none;
+        top: 0;
+
+        height: unset;
+    }
+
+        left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
+            width: 100%;
+        }
+
+        .directory-container {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .directory-container .right {
+            width: 100%;
+        } 
+
+        .article-header .spoiler-options .button-text {
+            font-size: 1rem;
+        }
+
+    #article main {
+        padding: 0 2rem;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .text-section {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .image-quote {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .image-quote img {
+        width: 100%;
+    }
+
+    .image-quote .quote {
+        width: 75%;
+    }
+}
