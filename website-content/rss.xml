@@ -5,10 +5,19 @@
         <link>https://scph1001.neocities.org/</link>
         <description>Hi</description>
 
-        <lastBuildDate>Wed, 08 Jul 2026 01:39:58 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 10 Aug 2026 00:25:40 GMT</lastBuildDate>
 
         <atom:link href="https://scph1001.neocities.org/" rel="self" type="application/rss+xml" />
 
+        <item>
+            <title>METAL GEAR SOLID!!!!!!!!!!!!!</title>
+            <link>https://scph1001.neocities.org/html/articles/metal-gear-solid</link>
+            <pubDate>Mon, 10 Aug 2026 00:25:40 GMT</pubDate>
+            <description>METAL GEAR SOLID!!!!!!!!!!!!</description>
+            <content:encoded><![CDATA[
+
+            ]]></content:encoded>
+        </item>
         <item>
             <title>CSS fixes and deltarune chapter 5 review</title>
             <link>https://scph1001.neocities.org/html/articles/deltarune-chapter-5</link>
