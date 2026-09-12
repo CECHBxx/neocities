@@ -2,6 +2,12 @@ let articleListArray =
 [
     /* put most recent articles at the top */
     {
+        title: "Dragon Quest",
+        createdDate: "08/15/26",
+        topic: ["Dragon Warrior", "Dragon Quest"],
+        mentioned: []
+    },
+    {
         title: "Metal Gear Solid",
         createdDate: "08/09/26",
         topic: ["Metal Gear Solid", "MGS1", "MGS"],

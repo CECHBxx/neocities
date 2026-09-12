@@ -33,6 +33,7 @@
     --h1-size: 3rem;
     --h2-text-size: 1.75rem;
     --h3-text-size: 1.50rem;
+    --h4-text-size: 1.35rem;
     --button-text-size: 1.25rem;
     --p-text-size: 1rem;
     --article-title-tab-size: 2.5rem;
@@ -120,6 +121,13 @@ h2 {
 h3 {
     font-family: "Roboto";
     font-size: var(--h3-text-size);
+    font-weight: 500;
+    color: var(--dark-text);
+}
+
+h4 {
+    font-family: "Roboto";
+    font-size: var(--h4-text-size);
     font-weight: 500;
     color: var(--dark-text);
 }
@@ -371,6 +379,44 @@ sidebar-directory {
         justify-content: center;
         height: 5rem;
     }
+
+/* TABLE STYLING ================================================================================================================================  */
+
+.table-group {
+    display: flex;
+    justify-content: space-evenly;
+    /* width: 100%; */
+}
+
+.table-group div {
+    width: fit-content;
+}
+
+table {
+    table-layout: auto;
+    height: fit-content;;
+    max-width: fit-content;
+    min-width: 30%;
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    border-bottom: 0.15rem solid var(--dark-text);
+}
+
+th, td {
+    text-align: left;
+    font-family: "Roboto";
+    line-height: var(--line-height);
+    font-size: var(--p-text-size);
+    font-family: "Roboto";
+    color: var(--dark-text);
+
+    min-width: 5rem;
+}
 
 /* LINK BUTTONS ================================================================================================================================  */
 
