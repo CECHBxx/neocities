@@ -498,13 +498,6 @@ th, td {
     }
 }
 
-@media screen and (max-width: 1200px) {
-    .table-group {
-        /* flex-direction: column; */
-
-    }
-}
-
 @media screen and (max-width: 1000px) {
     body {
         align-items: center;
