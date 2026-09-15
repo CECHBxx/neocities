@@ -385,7 +385,7 @@ sidebar-directory {
 .table-group {
     display: flex;
     justify-content: space-evenly;
-    /* width: 100%; */
+
 }
 
 .table-group div {
@@ -396,26 +396,26 @@ table {
     table-layout: auto;
     height: fit-content;;
     max-width: fit-content;
-    min-width: 30%;
+    /* min-width: 30%; */
 }
 
 tr {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
 
     border-bottom: 0.15rem solid var(--dark-text);
 }
 
 th, td {
-    text-align: left;
+    /* text-align: center; */
     font-family: "Roboto";
     line-height: var(--line-height);
     font-size: var(--p-text-size);
     font-family: "Roboto";
     color: var(--dark-text);
 
-    min-width: 5rem;
+    /* min-width: 5rem; */
 }
 
 /* LINK BUTTONS ================================================================================================================================  */
@@ -495,6 +495,13 @@ th, td {
 @media screen and (min-width: 1000px) {
     body left-sidebar, body main, body aside {
         height: 90vh;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .table-group {
+        /* flex-direction: column; */
+
     }
 }
 
@@ -596,6 +603,15 @@ th, td {
         left-sidebar .left-top-elements, left-sidebar .left-top-elements .button-group {
             gap: 0;
         }
+}
+
+@media screen and (max-width: 550px) {
+    .table-group {
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 450px) {
