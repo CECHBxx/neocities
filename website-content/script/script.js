@@ -92,10 +92,8 @@ const getFootnoteText = (noteSource) => {
     if (footNoteElement == undefined || footNoteElement == null) return
 
     let noteText = footNoteElement.querySelector(".note-text")
-    console.log(noteText)
-    if (noteText == null) return
-    if (typeof(noteText) == "array") return
 
+    if (noteText == null) return
     return noteText.innerText
 }
 
