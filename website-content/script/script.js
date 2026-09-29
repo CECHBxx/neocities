@@ -87,5 +87,37 @@ const fetchCookies = () => {
     setStyleDefault(cookies.stylePreference);
 }
 
+const getFootnoteText = (noteSource) => {
+    let footNoteElement = document.getElementById(noteSource)
+    if (footNoteElement == undefined || footNoteElement == null) return
+
+    let noteText = footNoteElement.querySelector(".note-text")
+    console.log(noteText)
+    if (noteText == null) return
+    if (typeof(noteText) == "array") return
+
+    return noteText.innerText
+}
+
+const generateFootnote = (element) => {
+    let footnoteText = getFootnoteText(element.id.replace("source", "explaination"))
+    if (footnoteText == null || footnoteText == undefined || footnoteText == "") return
+    let footnoteSpan = document.createElement("span")
+    footnoteSpan.classList.add("tooltiptext")
+    footnoteSpan.insertAdjacentHTML("beforeend", `<p>${footnoteText}</p>`)
+
+    element.appendChild(footnoteSpan)
+
+    let elementRectangle = footnoteSpan.getBoundingClientRect()
+    footnoteSpan.style.top = `-${elementRectangle.height/2}px`
+}
+
+const handleFootnotes = () => {
+    document.querySelectorAll(".hover-note").forEach(element => {
+        if (element.href.includes("explaination")) generateFootnote(element)
+    })
+}
+
+handleFootnotes()
 fetchCookies();
 export { cookies as default };
