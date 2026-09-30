@@ -120,17 +120,20 @@
     padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
 }
 
-    #home-page main .list-view .article-preview {
+    .list-view .article-preview {
         display: flex;
         gap: 1.25rem;
     }
 
-    #home-page main .list-view .article-preview .article-tab {
+    .list-view .article-preview .article-tab {
         width: 95%;
     }
 
-    #home-page main .list-view .article-preview .article-tab .article-title {
-        padding: 1rem;
+    .list-view .article-preview .article-tab .article-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
 /* ARTICLE GRID VIEW ============================================================================================================================================== */
@@ -158,6 +161,11 @@
             width: 100%;
             box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
         }
+
+            #home-page main .grid-view .article-preview .article-tab .article-title {
+                padding: 1rem;
+                width: 86%;
+            }
 
         #home-page main .grid-view .article-preview .article-date {
             align-self: flex-end;

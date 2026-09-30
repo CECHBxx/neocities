@@ -94,7 +94,8 @@ const getFootnoteText = (noteSource) => {
     let noteText = footNoteElement.querySelector(".note-text")
 
     if (noteText == null) return
-    return noteText.innerText
+
+    return noteText.innerHTML
 }
 
 const generateFootnote = (element) => {

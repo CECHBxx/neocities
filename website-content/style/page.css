@@ -296,7 +296,7 @@ body#article {
     -webkit-transition: 0.5s;
 }
 
-.hover-note .tooltiptext p {
+.hover-note .tooltiptext p, .hover-note .tooltiptext i {
     color: var(--background);
     text-align: left;
     overflow: hidden;
