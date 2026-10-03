@@ -1,5 +1,3 @@
-import cookies from "./script.js";
-
 let currentView = "grid-view";
 const backloggdURL = "scph1001";
 const backloggdLinkStart = `https://backloggd.com/u/${backloggdURL}/review`;
@@ -102,7 +100,22 @@ const setUpContent = () => {
         articleList.insertAdjacentElement("beforeend", post.content);
     }
 
-    setListDefault(cookies.viewPreference);
+    setListDefault(fetchCookiePreference());
+}
+
+// repeat function from script.js but import / export stopped working on neocities
+
+const fetchCookiePreference = () => {
+    let cookieList = document.cookie.split(";");
+
+    for (let i = 0; i < cookieList.length; i++) {
+        if (cookieList[i].length < 1) break;
+
+        let cookieName = cookieList[i].split("=")[0].trim();
+        let cookieValue = cookieList[i].split("=")[1].trim();
+
+        if (cookieName === "view-preference") return cookieValue;
+    }
 }
 
 setUpContent();

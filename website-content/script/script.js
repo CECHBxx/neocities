@@ -119,4 +119,3 @@ const handleFootnotes = () => {
 
 handleFootnotes()
 fetchCookies();
-export { cookies as default };
