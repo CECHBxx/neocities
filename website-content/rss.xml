@@ -5,10 +5,19 @@
         <link>https://scph1001.neocities.org/</link>
         <description>Hi</description>
 
-        <lastBuildDate>Wed, 30 Sep 2026 22:36:25 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 03 Oct 2026 04:13:28 GMT</lastBuildDate>
 
         <atom:link href="https://scph1001.neocities.org/" rel="self" type="application/rss+xml" />
 
+        <item>
+            <title>hi</title>
+            <link>https://scph1001.neocities.org/html/articles/danganronpa-trigger-happy-havoc</link>
+            <pubDate>Sat, 03 Oct 2026 04:13:28 GMT</pubDate>
+            <description>do not read. i talk about danganronpa.</description>
+            <content:encoded><![CDATA[
+
+            ]]></content:encoded>
+        </item>
         <item>
             <title>its ico wednesday</title>
             <link>https://scph1001.neocities.org/html/articles/ico</link>

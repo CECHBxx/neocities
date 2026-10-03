@@ -40,6 +40,7 @@ class PostListing {
         
         this.htmlURL = this.postData.title.replaceAll(" ", "-").toLowerCase();
         this.htmlURL = this.htmlURL.replaceAll(`'`, "");
+        this.htmlURL = this.htmlURL.replaceAll(`:`, "");
 
         [ this.day, this.month, this.year ] = this.postData.createdDate.split("/");
 
