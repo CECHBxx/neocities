@@ -3,7 +3,7 @@ let articleListArray =
     /* put most recent articles at the top */
     {
         title: "Danganronpa: Trigger Happy Havoc",
-        createdDate: "10/02/26",
+        createdDate: "10/03/26",
         topic: ["Danganronpa: Trigger Happy Havoc", "Danganronpa"],
         mentioned: ["Danganronpa", "Danganronpa: Trigger Happy Havoc", "Danganronpa 2: Goodbye Despair"]
     },
