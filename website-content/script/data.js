@@ -4,7 +4,7 @@ export let articleListArray =
         title: "Danganronpa: Trigger Happy Havoc",
         createdDate: "10/03/26",
         topic: ["Danganronpa: Trigger Happy Havoc", "Danganronpa"],
-        mentioned: ["Danganronpa", "Danganronpa: Trigger Happy Havoc", "Danganronpa 2: Goodbye Despair"]
+        mentioned: ["Danganronpa", "Danganronpa: Trigger Happy Havoc", "Danganronpa 2: Goodbye Despair", "Persona 4"]
     },
     {
         title: "ICO",
