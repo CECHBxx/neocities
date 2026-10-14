@@ -103,34 +103,22 @@
         color: var(--background);
     }
 
-h1 {
+h1, h2, h3, h4 {
     text-transform: uppercase;
-    font-size: var(--h1-size);
+    font-weight: 500;
+    color: var(--dark-text);
+    font-family: "Roboto";
+}
+
+h1 {  
     font-weight: 400;
-    color: var(--dark-text);
+    font-family: "Orbitron";
+    font-size: var(--h1-size);
 }
 
-h2 {
-    font-family: "Roboto";
-    font-size: var(--h2-text-size);
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--dark-text);
-}
-
-h3 {
-    font-family: "Roboto";
-    font-size: var(--h3-text-size);
-    font-weight: 500;
-    color: var(--dark-text);
-}
-
-h4 {
-    font-family: "Roboto";
-    font-size: var(--h4-text-size);
-    font-weight: 500;
-    color: var(--dark-text);
-}
+h2 { font-size: var(--h2-text-size); }
+h3 { font-size: var(--h3-text-size); }
+h4 { font-size: var(--h4-text-size); }
 
 p, span, i, li, img {
     line-height: var(--line-height);
@@ -431,29 +419,6 @@ th, td {
     text-decoration: none;
 }
 
-    @media screen and (max-width: 1000px) {
-        left-sidebar .single-button {
-            height: unset;
-            width: unset;
-            padding: 0.5rem;
-            box-shadow: none;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-transform: uppercase;
-        }
-
-            left-sidebar .single-button .color-strip {
-                display: none;
-            }
-
-            left-sidebar .single-button .button-text {
-                display: flex;
-            }
-    }
-
 .single-button-tall {
     width: 2.5rem;
     padding-bottom: 1rem;
@@ -487,18 +452,39 @@ th, td {
 
 /* MEDIA QUERIES ========================================================================================================================= */
 @media screen and (max-width: 1600px) {
-    aside {
-        display: none;
+    aside #right-top-elements {
+       visibility: hidden;
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1100px) {
     body left-sidebar, body main, body aside {
         height: 90vh;
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
+        left-sidebar .single-button {
+        height: unset;
+        width: unset;
+        padding: 0.5rem;
+        box-shadow: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-transform: uppercase;
+    }
+
+        left-sidebar .single-button .color-strip {
+            display: none;
+        }
+
+        left-sidebar .single-button .button-text {
+            display: flex;
+        }
+
     body {
         align-items: center;
         overflow-y: auto;
@@ -585,9 +571,7 @@ th, td {
                     color: var(--background);
                     text-transform: uppercase;
                 }
-}
 
-@media screen and (max-width: 800px) {
     left-sidebar {
         padding: 0rem 1rem;
         gap: 0;
@@ -596,6 +580,10 @@ th, td {
         left-sidebar .left-top-elements, left-sidebar .left-top-elements .button-group {
             gap: 0;
         }
+
+    aside #right-top-elements {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 550px) {

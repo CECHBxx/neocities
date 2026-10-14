@@ -49,7 +49,7 @@ export let articleListArray =
         mentioned: ["Super Smash Bros", "Super Smash Brothers", "The Legend of Zelda", "TLOZ", "Metroid"]
     },
     {
-        title: "I hate Persona 4",
+        title: "Persona 4",
         createdDate: "05/25/25",
         topic: ["Persona", "Persona 4", "Persona 4 Golden", "P4", "P4G"],
         mentioned: ["SMT", "Shin Megami Tensei", "Persona 5", "Persona 5 Royal", "P5", "P5R", "Persona 3", "P3"]
@@ -61,7 +61,7 @@ export let articleListArray =
         mentioned: ["No More Heroes", "NMH"]
     },
     {
-        title: "Burden I am Forced To Carry",
+        title: "Persona 5 Royal",
         createdDate: "04/17/24",
         topic: ["Persona", "Persona 5", "Persona 5 Royal", "P5", "P5R"],
         mentioned: ["SMT", "Shin Megami Tensei"]

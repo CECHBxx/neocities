@@ -286,6 +286,7 @@ body#article {
     position: absolute;
     z-index: 1;
     right: 250%;
+    top: -50%;
 
     opacity: 0;
 
@@ -294,9 +295,12 @@ body#article {
     -ms-transition: 0.5s;
     -moz-transition: 0.5s;
     -webkit-transition: 0.5s;
+
+    color: var(--background);
+    text-align: left;
 }
 
-.hover-note .tooltiptext p, .hover-note .tooltiptext i {
+.hover-note .tooltiptext p, .hover-note .tooltiptext i, .hover-note .tooltiptext a {
     color: var(--background);
     text-align: left;
     overflow: hidden;

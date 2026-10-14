@@ -10,6 +10,10 @@ let dontShowSpoilersToggle;
 let article;
 let currentSpoilers;
 
+let noteStart = "(NoteStart: "
+let noteEnd = " :NoteEnd)"
+let footnoteCount = 0;
+
 defaultToggle.addEventListener("click", (event) => {
     switchView(accessibleToggle, defaultToggle, "default");
 });
@@ -87,35 +91,61 @@ const fetchCookies = () => {
     setStyleDefault(cookies.stylePreference);
 }
 
-const getFootnoteText = (noteSource) => {
-    let footNoteElement = document.getElementById(noteSource)
-    if (footNoteElement == undefined || footNoteElement == null) return
+// BUILDING FOOTNOTES DYNAMICALLY ==========================================================================================================================================
 
-    let noteText = footNoteElement.querySelector(".note-text")
+const generateFootnote = (element, noteText) => {
+    if (element == null || element == undefined) return
+    if (noteText == null || noteText == undefined || noteText == "") return
 
-    if (noteText == null) return
+    let footnoteSpan = document.createElement("span");
+    footnoteSpan.classList.add("tooltiptext");
+    footnoteSpan.insertAdjacentHTML("beforeend", noteText);
+    element.appendChild(footnoteSpan);
+    let elementRectangle = footnoteSpan.getBoundingClientRect();
 
-    return noteText.innerHTML
+    footnoteSpan.style.top = `-${elementRectangle.height/2}px`;
 }
 
-const generateFootnote = (element) => {
-    let footnoteText = getFootnoteText(element.id.replace("source", "explaination"))
-    if (footnoteText == null || footnoteText == undefined || footnoteText == "") return
-    let footnoteSpan = document.createElement("span")
-    footnoteSpan.classList.add("tooltiptext")
-    footnoteSpan.insertAdjacentHTML("beforeend", `<p>${footnoteText}</p>`)
+const buildFootNote = (section, noteSection, noteIndex) => {
+    let note = section.innerHTML.substring(noteIndex, section.innerHTML.indexOf(noteEnd) + noteEnd.length);
+    let cleanNote = note.substring(noteStart.length, note.length - noteEnd.length);
 
-    element.appendChild(footnoteSpan)
+    let beforeNote = section.innerHTML.substring(0, noteIndex);
+    let afterNote = section.innerHTML.substring(section.innerHTML.indexOf(noteEnd) + noteEnd.length);
+    let newHTML = `<a href="#note-${footnoteCount}-explanation" class="hover-note" id="note-${footnoteCount}-source">${footnoteCount}</a>`;
 
-    let elementRectangle = footnoteSpan.getBoundingClientRect()
-    footnoteSpan.style.top = `-${elementRectangle.height/2}px`
+    
+    section.innerHTML = beforeNote + newHTML + afterNote;
+    // fetching the newly added element through queryselector isnt the best- but it works
+    generateFootnote(section.querySelector(`#note-${footnoteCount}-source`), cleanNote);
+
+    noteSection.insertAdjacentHTML("beforeend", `<p id="note-${footnoteCount}-explanation"><span><a href="#note-${footnoteCount}-source" class="hover-note">${footnoteCount}: </a><span class="note-text">${cleanNote}</span></p>`)
 }
 
-const handleFootnotes = () => {
-    document.querySelectorAll(".hover-note").forEach(element => {
-        if (element.href.includes("explaination")) generateFootnote(element)
-    })
+const searchForNotes = (section, noteSection) => {
+    let noteIndex = section.innerHTML.indexOf(noteStart)
+
+    while (-1 < noteIndex) {
+        footnoteCount += 1;
+        buildFootNote(section, noteSection, noteIndex);
+        noteIndex = section.innerHTML.indexOf(noteStart);
+    }
 }
 
-handleFootnotes()
+const buildFootNotes = () => {
+    let sections = document.querySelectorAll(".text-section");
+    let noteSection = document.querySelector("#notes-container");
+
+    if (noteSection == null || noteSection == undefined) return
+
+    for (let i = 0; i < sections.length; i++) {
+        let section = sections[i];
+        if (section == noteSection) return
+        searchForNotes(section, noteSection)
+    }
+}
+
+// BUILDING FOOTNOTES DYNAMICALLY ==========================================================================================================================================
+
+buildFootNotes();
 fetchCookies();
