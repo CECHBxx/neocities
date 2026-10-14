@@ -10,8 +10,9 @@ let dontShowSpoilersToggle;
 let article;
 let currentSpoilers;
 
-let noteStart = "(NoteStart: "
+let noteStart = "(NoteStart:"
 let noteEnd = " :NoteEnd)"
+let spoilerMark = "!S"
 let footnoteCount = 0;
 
 defaultToggle.addEventListener("click", (event) => {
@@ -109,17 +110,25 @@ const generateFootnote = (element, noteText) => {
 const buildFootNote = (section, noteSection, noteIndex) => {
     let note = section.innerHTML.substring(noteIndex, section.innerHTML.indexOf(noteEnd) + noteEnd.length);
     let cleanNote = note.substring(noteStart.length, note.length - noteEnd.length);
+    let footnoteClass = "notes-section-footnote"
+    let toolTipClass = "hover-note"
+
+    if (cleanNote.substring(0, spoilerMark.length) == spoilerMark) {
+        footnoteClass += " spoilers"
+        toolTipClass += " spoilers"
+        cleanNote = cleanNote.substring(spoilerMark.length)
+    }
+    
 
     let beforeNote = section.innerHTML.substring(0, noteIndex);
     let afterNote = section.innerHTML.substring(section.innerHTML.indexOf(noteEnd) + noteEnd.length);
-    let newHTML = `<a href="#note-${footnoteCount}-explanation" class="hover-note" id="note-${footnoteCount}-source">${footnoteCount}</a>`;
-
+    let newHTML = `<a href="#note-${footnoteCount}-explanation" class="${toolTipClass}" id="note-${footnoteCount}-source">${footnoteCount}</a>`;
     
     section.innerHTML = beforeNote + newHTML + afterNote;
     // fetching the newly added element through queryselector isnt the best- but it works
     generateFootnote(section.querySelector(`#note-${footnoteCount}-source`), cleanNote);
 
-    noteSection.insertAdjacentHTML("beforeend", `<p id="note-${footnoteCount}-explanation"><span><a href="#note-${footnoteCount}-source" class="hover-note">${footnoteCount}: </a><span class="note-text">${cleanNote}</span></p>`)
+    noteSection.insertAdjacentHTML("beforeend", `<p id="note-${footnoteCount}-explanation" class="${footnoteClass}"><span><a href="#note-${footnoteCount}-source" class="hover-note">${footnoteCount}: </a><span class="note-text">${cleanNote}</span></p>`)
 }
 
 const searchForNotes = (section, noteSection) => {

@@ -1,6 +1,12 @@
 export let articleListArray = 
 [
     {
+        title: "Hotel Dusk: Room 215",
+        createdDate: "10/14/26",
+        topic: ["Hotel Dusk: Room 215", "Hotel Dusk"],
+        mentioned: ["Danganronpa", "Ace Attorney"]
+    },
+    {
         title: "Danganronpa: Trigger Happy Havoc",
         createdDate: "10/03/26",
         topic: ["Danganronpa: Trigger Happy Havoc", "Danganronpa"],

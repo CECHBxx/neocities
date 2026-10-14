@@ -1,5 +1,4 @@
 #home-page main {
-    max-height: calc(95vh - var(--margin-value));
     width: var(--middle-page-width);
 
     display: flex;
