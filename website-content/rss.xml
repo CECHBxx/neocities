@@ -6,10 +6,19 @@
         <description>Hi</description>
 
         <!-- https://www.utctime.net/gmt-time-now -->
-        <lastBuildDate>Wed, 14 Oct 2026 20:22:33 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 16 Oct 2026 05:49:45 GMT</lastBuildDate>
 
         <atom:link href="https://scph1001.neocities.org/" rel="self" type="application/rss+xml" />
 
+        <item>
+            <title>hi</title>
+            <link>https://scph1001.neocities.org/</link>
+            <pubDate>Fri, 16 Oct 2026 05:49:45 GMT</pubDate>
+            <description>CSS overhaul and changes to CSS in general. 99% done but something i missed will probably pop up</description>
+            <content:encoded><![CDATA[
+
+            ]]></content:encoded>
+        </item>
         <item>
             <title>hi</title>
             <link>https://scph1001.neocities.org/html/articles/hotel-dusk-room-215</link>

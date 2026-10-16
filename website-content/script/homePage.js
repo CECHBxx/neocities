@@ -40,6 +40,8 @@ class PostListing {
         this.htmlURL = this.postData.title.replaceAll(" ", "-").toLowerCase();
         this.htmlURL = this.htmlURL.replaceAll(`'`, "");
         this.htmlURL = this.htmlURL.replaceAll(`:`, "");
+        this.postData.title = this.postData.title.replaceAll(`:`, "");
+        this.htmlURL = this.htmlURL.replaceAll(`<br>`, "");
 
         [ this.day, this.month, this.year ] = this.postData.createdDate.split("/");
 
@@ -51,12 +53,11 @@ class PostListing {
         linkToArticle.classList.add("article-preview");
         const linkToArticleContent =    `<div class="article-tab">
                                             <h2 class="article-title">${this.postData.title}</h2>
-                                        </div>
-
-                                        <div class="article-date">
-                                            <p>${this.day[0]}</p><p>${this.day[1]}</p>
-                                            <p>${this.month[0]}</p><p>${this.month[1]}</p>
-                                            <p>${this.year[0]}</p><p>${this.year[1]}</p>
+                                            <div class="article-date">
+                                                <p>${this.day[0]}</p><p>${this.day[1]}</p><p class="date-seperator">/</p>
+                                                <p>${this.month[0]}</p><p>${this.month[1]}</p><p class="date-seperator">/</p>
+                                                <p>${this.year[0]}</p><p>${this.year[1]}</p>
+                                            </div>
                                         </div>`;
 
         linkToArticle.insertAdjacentHTML("beforeend", linkToArticleContent);

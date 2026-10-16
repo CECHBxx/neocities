@@ -53,15 +53,15 @@ if (document.querySelector(".spoiler-options") != undefined) {
     currentSpoilers = showSpoilersToggle;
     article = document.querySelector("#main-review-content");
 
-    spoilerTagsToggle.addEventListener("click", (event) => {
+    spoilerTagsToggle.addEventListener("click", () => {
         switchSpoilerView(spoilerTagsToggle, "spoiler-tags");
     });
 
-    showSpoilersToggle.addEventListener("click", (event) => {
+    showSpoilersToggle.addEventListener("click", () => {
         switchSpoilerView(showSpoilersToggle, "spoilers");
     });
 
-    dontShowSpoilersToggle.addEventListener("click", (event) => {
+    dontShowSpoilersToggle.addEventListener("click", () => {
         switchSpoilerView(dontShowSpoilersToggle, "no-spoilers");
     });
 }
@@ -94,67 +94,72 @@ const fetchCookies = () => {
 
 // BUILDING FOOTNOTES DYNAMICALLY ==========================================================================================================================================
 
-const generateFootnote = (element, noteText) => {
-    if (element == null || element == undefined) return
-    if (noteText == null || noteText == undefined || noteText == "") return
-
-    let footnoteSpan = document.createElement("span");
-    footnoteSpan.classList.add("tooltiptext");
-    footnoteSpan.insertAdjacentHTML("beforeend", noteText);
-    element.appendChild(footnoteSpan);
-    let elementRectangle = footnoteSpan.getBoundingClientRect();
-
-    footnoteSpan.style.top = `-${elementRectangle.height/2}px`;
+const getFootnoteType = (footnoteRectangle, containerRectangle, width) => {
+    if (containerRectangle.right < (footnoteRectangle.x + width)) return "left"
+    return "right";
 }
 
-const buildFootNote = (section, noteSection, noteIndex) => {
-    let note = section.innerHTML.substring(noteIndex, section.innerHTML.indexOf(noteEnd) + noteEnd.length);
-    let cleanNote = note.substring(noteStart.length, note.length - noteEnd.length);
-    let footnoteClass = "notes-section-footnote"
-    let toolTipClass = "hover-note"
-
-    if (cleanNote.substring(0, spoilerMark.length) == spoilerMark) {
-        footnoteClass += " spoilers"
-        toolTipClass += " spoilers"
-        cleanNote = cleanNote.substring(spoilerMark.length)
-    }
+const adjustFootnoteLocation = (footnote, footnoteData) => {
+    if (footnoteData.style.display == "none") return
     
+    let boundingRectange = document.querySelector("main").getBoundingClientRect();
+    let footnoteLocation = footnote.getBoundingClientRect();
+    let type = getFootnoteType(footnoteLocation, boundingRectange, footnoteData.offsetWidth);
+    let direction = (window.innerHeight / 2 < footnoteLocation.y) ? "up" : "down";
 
-    let beforeNote = section.innerHTML.substring(0, noteIndex);
-    let afterNote = section.innerHTML.substring(section.innerHTML.indexOf(noteEnd) + noteEnd.length);
-    let newHTML = `<a href="#note-${footnoteCount}-explanation" class="${toolTipClass}" id="note-${footnoteCount}-source">${footnoteCount}</a>`;
+    footnoteData.setAttribute("horizontal-direction", type);
+    footnoteData.setAttribute("vertical-direction", direction);
+}
+
+const updateFootnote = (currentElement) => {
+    let number = currentElement.attributes["number"].nodeValue;
+    let innerHTML = `<sub>${number}</sub><span class="footnote-text" type="footnote">${currentElement.innerHTML}</span>`;
+
+    let footnote = document.createElement("a");
+    footnote.id = `footnote-location-${number}`;
+    footnote.className = `footnote`;
+    footnote.href = `#footnote-source-${number}`;
+    footnote.innerHTML = innerHTML;
+
+    currentElement.replaceWith(footnote);
+    let footnoteData = footnote.querySelector("span");
     
-    section.innerHTML = beforeNote + newHTML + afterNote;
-    // fetching the newly added element through queryselector isnt the best- but it works
-    generateFootnote(section.querySelector(`#note-${footnoteCount}-source`), cleanNote);
-
-    noteSection.insertAdjacentHTML("beforeend", `<p id="note-${footnoteCount}-explanation" class="${footnoteClass}"><span><a href="#note-${footnoteCount}-source" class="hover-note">${footnoteCount}: </a><span class="note-text">${cleanNote}</span></p>`)
+    footnote.addEventListener("mouseover", () => {adjustFootnoteLocation(footnote, footnoteData)});
+    adjustFootnoteLocation(footnote, footnoteData); // fixes any currently out of bounds elements
 }
 
-const searchForNotes = (section, noteSection) => {
-    let noteIndex = section.innerHTML.indexOf(noteStart)
-
-    while (-1 < noteIndex) {
-        footnoteCount += 1;
-        buildFootNote(section, noteSection, noteIndex);
-        noteIndex = section.innerHTML.indexOf(noteStart);
-    }
+const setUpFootnotes = () => {
+    let footnotes = document.querySelectorAll("foot-note");
+    for (let i = 0; i < footnotes.length; i++) updateFootnote(footnotes[i]);
 }
 
-const buildFootNotes = () => {
-    let sections = document.querySelectorAll(".text-section");
-    let noteSection = document.querySelector("#notes-container");
+const setUpSideBar = () => {
+    let svgUp = `<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                    fill="currentColor" viewBox="0 0 24 24" >
+                    <path d="M12.82 5.43c-.37-.54-1.26-.54-1.64 0l-7 10c-.21.31-.24.7-.07 1.04.17.33.51.54.89.54h14c.37 0 .71-.21.89-.54a1 1 0 0 0-.07-1.04zM6.92 15 12 7.74 17.08 15z"></path>
+                </svg>`
 
-    if (noteSection == null || noteSection == undefined) return
+    let svgDown = `<svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                        fill="currentColor" viewBox="0 0 24 24" >
+                        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                        <path d="M19 7H5c-.37 0-.71.21-.89.54a1 1 0 0 0 .07 1.04l7 10a.997.997 0 0 0 1.64 0l7-10c.21-.31.24-.7.07-1.04A1 1 0 0 0 19 7m-7 9.26L6.92 9h10.16z"></path>
+                    </svg>`
 
-    for (let i = 0; i < sections.length; i++) {
-        let section = sections[i];
-        if (section == noteSection) return
-        searchForNotes(section, noteSection)
-    }
+    let body = document.querySelector("body");
+    let sidebarButton = document.querySelector("#sidebar-button");
+    if (sidebarButton == null || sidebarButton == undefined) return;
+
+    sidebarButton.addEventListener("click", () => {
+        if (body.classList.contains("view-sidebar")) {
+            body.classList.remove("view-sidebar");
+            sidebarButton.innerHTML = svgDown;
+        } else {
+            body.classList.add("view-sidebar");
+            sidebarButton.innerHTML = svgUp;
+        }
+    });
 }
 
-// BUILDING FOOTNOTES DYNAMICALLY ==========================================================================================================================================
-
-buildFootNotes();
+setUpFootnotes();
+setUpSideBar();
 fetchCookies();

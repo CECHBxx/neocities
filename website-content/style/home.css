@@ -1,239 +1,341 @@
-#home-page main {
-    width: var(--middle-page-width);
+* {
+    --visble-rows: 4;
+    --gap-between-rows: 2rem;
+}
+
+#home-page {
+    align-items: center;
+    height: 90vh;
+}
+
+/* CENTER CONTAINER WITH PAGE LINKS ======================================================================================================================================= */
+
+#article-container {
+    width: 75%;
+    margin: 0 5vh;
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    justify-content: space-between;
 }
 
-    #home-page main #mobile-image {
+#article-container #article-list {
+    height: 100%;
+    overflow-y: auto
+}
+
+#article-container .article-preview {
+    display: flex;
+    text-decoration: none;
+}
+
+#article-container .article-preview:last-child {
+    margin-bottom: 0;
+}
+
+.article-preview .article-tab {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-position: center;
+
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.25);
+    
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--fade-time);
+}
+
+.article-tab .article-title {
+    color: var(--background);
+    font-family: "Orbitron";
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity var(--fade-time);
+}
+
+.article-tab:hover {
+    background-color: rgba(0, 0, 0, 0.60);
+}
+
+.article-tab:hover .article-title {
+    opacity: 1;
+}
+
+.article-preview .article-date {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
+    align-content: end;
+    row-gap: 0rem;
+}
+
+.article-preview .article-date p {
+    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    text-align: center;
+
+    font-size: var(--article-date-size);
+    font-weight: 400;
+    font-family: "Orbitron";
+    margin: 0;
+    color: var(--background);
+
+    opacity: 0;
+    transition: opacity var(--fade-time);
+}
+
+.article-tab:hover .article-date p {
+    opacity: 1;
+}
+
+/* LIST STYLING ============================================================================================================================================================ */
+
+#article-container .list-view  {
+    display: grid;
+    grid-template-columns: 100%;
+    overflow-y: scroll;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+
+.list-view .article-preview {
+    margin-bottom: 2rem;
+    height: calc(calc(90vh / var(--visble-rows)) - (var(--gap-between-rows) - 0.25rem));
+    width: 100%;
+}
+
+.list-view {
+    padding-bottom: 0.5rem;
+}
+
+.list-view .article-tab {
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.list-view .article-title br {
+    display: none;
+}
+
+.list-view .article-preview .article-date {
+    display: flex;
+}
+
+.list-view .article-preview .article-date p {
+    font-size: 1.5rem;
+}
+
+/* GRID STYLING ============================================================================================================================================================ */
+
+#article-container .grid-view  {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    overflow-y: scroll;
+}
+
+.grid-view .article-preview {
+    height: calc((90vh / 3) - 1rem);
+    margin-bottom: 1rem;
+    position: relative;
+    width: 95%;
+}
+
+.grid-view .article-tab {
+    align-items: unset;
+    justify-content: unset;
+
+    padding: 1rem;
+}
+
+.grid-view .article-tab .article-title {
+    text-align: left;
+    width: 90%;
+    font-size: 1.25rem;
+    display: table-caption;
+    word-spacing: 9999rem;
+    line-height: 2rem;
+    text-overflow: ellipsis;
+}
+
+.grid-view .article-preview .article-date .date-seperator {
+    display: none;
+}
+
+/* ACCESSIBLE STYLING ====================================================================================================================================================== */
+
+.accessible .article-preview .article-tab {
+    background-color: rgba(0, 0, 0, 0.60);
+}
+
+.accessible .article-tab .article-title {
+    opacity: 1;
+}
+
+.accessible .article-preview .article-date p {
+    opacity: 1;
+}
+
+.accessible .grid-view .article-tab .article-title {
+    writing-mode: unset;
+    text-orientation: unset;
+    display: block;
+
+    overflow-wrap: unset;
+    word-spacing: unset;
+    font-size: 2rem;
+}
+
+.accessible .grid-view .article-tab .article-title br {
+    display: none;
+}
+
+/* MEDIA QUERIES =========================================================================================================================================================== */
+
+@media screen and (max-width: 1600px) {
+    #article-container .grid-view  { grid-template-columns: 50% 50%; }
+
+    .grid-view .article-preview {
+        margin-bottom: 1rem;
+        position: relative;
+        width: 95%;
+    }
+
+    .grid-view .article-tab {
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .grid-view .article-tab .article-title {
+        width: 90%;
+        font-size: 1.25rem;
+
+        line-height: 2rem;
+        text-overflow: ellipsis;
+
+        display: unset;
+        word-spacing: unset;
+
+        font-size: 1.75rem;
+        text-align: center;
+    }
+
+    .grid-view .article-tab .article-title br { display: none; }
+
+    .grid-view .article-tab {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-view .article-preview .article-date {
+        display: flex;
+        justify-content: unset;
+    }
+
+    .grid-view .article-preview .article-date .date-seperator { display: block; }
+}
+
+@media screen and (max-width: 1450px) {
+    .grid-view .article-tab .article-title, .accessible .grid-view .article-tab .article-title {
+        font-size: 1.25rem;
+    }
+
+    .list-view .article-title { padding: 1rem; }
+
+    .list-view .article-tab { gap: 0; }
+
+    #article-container {
+        width: 100%;
+        margin: 0 0 0 5vh
+    }
+
+    #article-container .grid-view  {
+        display: grid;
+        grid-template-columns: 100%;
+        overflow-y: scroll;
+        justify-content: space-between;
+        padding-right: 1rem;
+    }
+
+    .grid-view .article-preview {
+        margin-bottom: 2rem;
+        height: calc(calc(90vh / var(--visble-rows)) - (var(--gap-between-rows) - 0.25rem));
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #home-page {
+        align-items: unset;
+        flex-direction: column
+    }
+
+    body, #article-container, #article-container #article-list {
+        padding: 0;
+        margin: 0;
+    }
+
+    #article-container {
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body left-sidebar, body main, body aside {
+        height: unset;
+    }
+
+    #article-list .article-preview {
+        margin-bottom: 0.25rem;
+    }
+
+    left-sidebar {
+        min-width: unset;
+        width: 100%;
+        background-color: var(--primary-accent);
+        position: fixed;
+        top: 0;
+        z-index: 1;
+
+        padding: 0.25rem;
+    }
+
+    .accessible left-sidebar {
+        background-color: var(--dark-text);
+    }
+
+    left-sidebar #mobile-sidebar {
+        display: flex;
+        align-items: center;
+        height: 2.5rem;
+    }
+
+    .view-sidebar left-sidebar #mobile-sidebar {
+        margin-bottom: 1rem;
+    }
+
+    left-sidebar .sidebar-stack {
         display: none;
     }
 
-    #home-page main .article-heading {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 95%;
-        padding-right: 3.25rem;
+    left-sidebar #mobile-sidebar #sidebar-button {
+        background-color: var(--primary-accent);
+        border: unset;
     }
 
-        #home-page main .article-heading .toggle-button {
-            display: none;
-            height: 3rem;
-            width: 20%;
-        }
-
-            #home-page main .article-heading .toggle-button button {
-                height: 100%;
-            }
-
-    #home-page main #article-list {
-        height: 100%;
-        overflow-y: auto;
-        padding-right: 2rem;
+    .accessible left-sidebar #mobile-sidebar #sidebar-button {
+        background-color: var(--dark-text);
     }
 
-        #home-page main #article-list .article-preview {
-            text-decoration: none;
-            min-height: 21%;
-            width: 100%;
-        }
-
-            #home-page main #article-list .article-preview .article-tab {
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-blend-mode: overlay;
-                background-position: center;
-
-                display: flex;
-                padding: 0.5rem;
-
-                box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-                height: 100%;
-
-                transition: background-color var(--fade-time);
-            }
-
-                .default main #article-list .article-preview .article-tab {
-                    background-color: rgba(0, 0, 0, 0.25);
-                }
-
-                .accessible main #article-list .article-preview .article-tab {
-                    background-color: rgba(0, 0, 0, 0.65);
-                }
-
-                #home-page main #article-list .article-preview .article-tab .article-title {
-                    font-family: "Orbitron";
-                    color: var(--background);
-                    font-size: var(--article-title-tab-size); 
-                    font-weight: 500;
-                    text-transform: uppercase;
-                    transition: opacity var(--fade-time);
-                }
-
-                    .default main #article-list .article-preview .article-tab .article-title {
-                        opacity: 0;
-                    }
-
-
-                .accessible main #article-list .article-preview .article-tab .article-title {
-                    font-size: var(--article-title-tab-size); 
-                    opacity: 1;
-                }
-
-                .default main #article-list .article-preview .article-tab:hover {
-                    background-color: rgba(0, 0, 0, 0.60);
-                }
-                
-                    #home-page main #article-list .article-preview .article-tab:hover .article-title {
-                        opacity: 1;
-                    }
-
-            #home-page main #article-list .article-preview .article-date {
-                display: grid;
-                justify-content: space-between;
-                grid-template-columns: 1fr 1fr;
-                align-content: end;
-                row-gap: 0rem;
-            }
-
-                #home-page main #article-list .article-preview .article-date p {
-                    text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-                    text-align: center;
-
-                    font-size: var(--article-date-size);
-                    font-weight: 400;
-                    font-family: "Orbitron";
-                    margin: 0;
-                }
-
-/* ARTICLE LIST VIEW ============================================================================================================================================== */
-
-#home-page main .list-view {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-
-    padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
-}
-
-    .list-view .article-preview {
-        display: flex;
-        gap: 1.25rem;
+    left-sidebar #mobile-sidebar #sidebar-button svg {
+        fill: var(--background);
     }
-
-    .list-view .article-preview .article-tab {
-        width: 95%;
-    }
-
-    .list-view .article-preview .article-tab .article-title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-/* ARTICLE GRID VIEW ============================================================================================================================================== */
-
-#home-page main .grid-view {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-    gap: 2rem;
-    padding-right: 2rem;
-
-    grid-auto-rows: 30%;
-}
-
-    #home-page main .grid-view .article-preview {
-        color: var(--background);
-        display: flex;
-        gap: 1rem;
-        width: 100%;
-
-        position: relative;
-    }
-
-        #home-page main .grid-view .article-preview .article-tab {
-            height: 100%;
-            width: 100%;
-            box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-        }
-
-            #home-page main .grid-view .article-preview .article-tab .article-title {
-                padding: 0.5rem;
-                width: 86%;
-            }
-
-        #home-page main .grid-view .article-preview .article-date {
-            align-self: flex-end;
-
-            position: absolute;
-            right: 1rem;
-            bottom: 1rem;
-        }
-
-            #home-page main .grid-view .article-preview .article-date p {
-                color: var(--background);
-            }
-
-/* default to list view when screen is small enough */
-@media screen and (max-width: 1600px) {
-    #home-page main #article-list {
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-
-        padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
-    }
-
-    #home-page main #article-list {
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
-
-        padding-bottom: 1rem; /* to avoid cutting off the last elements drop shadow */
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    * {
-        --article-title-tab-size: 1rem;
-        --article-date-size: 1rem;
-    }
-
-    #home-page main {
-        max-height: unset;
-        padding: 0;
-    }
-
-    #home-page main #article-list {
-        padding-right: 0;
-    }
-            
-    main #article-list {
-        overflow-y: unset;
-        padding: 0;
-
-        margin-bottom: 1rem;
-
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
-        main #article-list .article-preview {
-            height: 10rem;
-        }
-
-            main #article-list .article-preview .article-tab {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            main #article-list .article-preview .article-date p {
-                line-height: unset;
-            }
 }

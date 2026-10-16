@@ -1,106 +1,71 @@
-* {
-    --tool-tip-box-width: 326px
-}
-
-/* PAGE ELEMENT STYLING =============================================================================================================== */
-
-left-sidebar {
+#article left-sidebar {
     height: 90vh;
-    top: 5vh;
     position: sticky;
+    top: 5vh;
 }
 
-    body#article.accessible left-sidebar {
-        background-image: none;
-        width: unset;
-        min-width: unset;
-        max-width: unset;
-    }
-
-    body#article.accessible left-sidebar .left-sidebar-lower-buttons {
-        width: 100%;
-    }
-
-        body#article.accessible left-sidebar .left-sidebar-lower-buttons button {
-            padding: 0 1rem;
-        }
-
-    #article main {
-        flex: 1 1 auto
-    }
-
-body#article {
-    margin-bottom: 0;
+body {
+    margin-bottom: 0rem;
+    gap: 2.5rem;
 }
 
-    body#article main {
-        height: 100%;
-    }
+body#article main {
+    height: 100%;
+    width: 100%;
+}
 
-    main {
-        display: flex;
-        flex-direction: column;
-        width: var(--middle-page-width);
-    }
-
-/* HEADER ========================================================================================================================== */
+/* ARTICLE STYLING ========================================================================================================================================================== */
 
 .article-header {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    color: var(--dark-text);
     margin-bottom: 2rem;
 }
-
-    .article-header .spoiler-options {
-        width: 100%;
-    }
-
-    .article-header img {
-        height: 100%; 
-        width: 100%;
-        max-height: 40vh;
-        object-fit: cover;
-    }
     
-    .article-header h3 {
-        align-self: end;
-    }
+.article-header h3 {
+    align-self: end;
+}
 
-    .article-header::after {
-        content: "";
-        height: 0.5rem;
-        width: 100%;
-        background-color: var(--primary-accent);
-    }
+.article-header::after {
+    content: "";
+    height: 0.5rem;
+    width: 100%;
+    background-color: var(--primary-accent);
+}
 
-/* PAGE STYLING =============================================================================================================== */
+.article-header img {
+    width: 100%;
+    max-height: 40vh;
+    object-fit: cover;
+}
 
-.text-section, .text-section-no-margin {
+#main-review-content {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding-right: 0.25rem;
+    gap: 2rem;
 
+    margin-bottom: 5vh;
+}
+
+#main-review-content img:not(.keep-height) {
+    object-fit: contain;
+    max-height: 50vh;
     width: 100%;
 }
 
-.text-section {
-    margin-bottom: 3rem;
+#main-review-content h1, h2, h3 {
+    margin-top: 0rem 2rem;
+    margin-bottom: 1rem;
 }
 
-    .text-section h2 {
-        margin-bottom: 1rem;
-    }
+#main-review-content section, .text-section-no-margin {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-    .text-section img {
-        align-self: center;
-        object-fit: contain;
-        max-height: 50vh;
-        margin: 1rem 0;
-        width: 90%;
-    }
+/* CONTAINER LAYOUTS WITHIN ARTICLE ========================================================================================================================================= */
 
 .image-quote {
     display: flex;
@@ -108,26 +73,24 @@ body#article {
     align-items: center;
     gap: 3rem;
     width: 100%;
-    margin-bottom: 1rem;
+
+    margin: 2rem 0;
 }
 
-    .image-quote img {
-        width: 50%;
-    }
+#main-review-content .image-quote img {
+    width: 50%;
+}
 
-    .image-quote .quote {
-        width: 25%;
-    }
+.image-quote .quote {
+    width: 25%;
+}
 
-        .image-quote .quote .speaker {
-        text-align: right;
-        }
-
-/* LAYOUTS =========================================================================================================================================== */
+.image-quote .quote .speaker {
+    text-align: right;
+}
 
 .two-column {
     display: flex;
-    justify-content: space-between;
     gap: 2rem;
     height: 100%;
     width: 100%;
@@ -135,162 +98,131 @@ body#article {
     align-items: center;
 }
 
-    /* .two-column .text-section-no-margin {
-        max-width: 65%;
-    } */
+.two-column div, .two-column img {
+    width: 100%;
+}
 
-    .two-column img {
-        min-width: 40%;
-        width: 100%;
-    }
+/* TABLE STYLING ===========================================================================================================================================================  */
 
-/* DIRECTORY SECTION ================================================================================================================ */
+.table-group {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.table-with-title {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.table-group div {
+    width: fit-content;
+}
+
+table {
+    table-layout: auto;
+    height: fit-content;;
+    max-width: fit-content;
+}
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 0.15rem solid var(--dark-text);
+}
+
+/* DIRECTORY SECTION ======================================================================================================================================================== */
 
 .directory-container {
     width: 100%;
 
     display: flex;
     align-self: center;
+    align-items: center;
+    justify-content: s;
 
     gap: 10rem;
 }
 
-    .directory-container .right {
-        width: 40%;
-    }
-
-    .directory-container .left {
-        height: 100%;
-    } 
-
-
-/* SPOILER STYLING ============================================================================================================================ */
-
-.no-spoilers .spoilers, .no-spoilers .single-line-spoilers, .no-spoilers .hide-with-spoilers {
-    display: none;
+.directory-container .right {
+    width: 40%;
 }
 
-.no-spoilers .hide-line .single-line {
-    display: none;
-}
-
-.spoiler-tags .spoilers span, .spoiler-tags .spoilers span a, .spoiler-tags .single-line {
-    background-color: var(--dark-text);
-}
-
-    .spoiler-tags .single-line:hover {
-        background-color: var(--background);
-    }
-
-    .spoiler-tags .spoilers:hover span, .spoiler-tags .spoilers:hover i, .spoiler-tags .spoilers:hover a { /* if the user hovers over the div with the spoilers show all lines (makes it so they have hover over the gutters and still see the spoilers) */
-        /* color: var(--background); */
-        background-color: var(--background);
-    }
-
-.spoiler-tags img.spoilers { /* image spoiler */
-    opacity: 0.75;
-    filter: brightness(0%);
-}
-
-    .spoiler-tags img.spoilers:hover {
-        opacity: 1;
-        filter: brightness(100%);
-    }
-
-.spoiler-tags div.spoilers p span { /* image quote spoiler */
-    background-color: var(--dark-text);
-}
-
-    .spoiler-tags div.spoilers:hover p span {
-        background-color: var(--background);
-    }
-
-    .spoiler-tags img.spoilers:hover + .spoilers > p > span, .spoiler-tags img.spoilers:hover + .spoilers > p > span > a { /* when hoving over the image also reveal the quote */
-        background-color: var(--background);
-
-        /* this does not work in the other direction (overing over a quote shows an image) because
-            1) its hard :smiles:
-            2) i think it makes more sense this way since an image can spoil much more than a quote
-                maybe someone is using the hover tags to see if theyd be spoiled by something or not
-                if they hover over the quote and theyre fine with it- then they can hover over the image and see it as well
-        */
-    }
-
-/* INFO PAGE =========================================================================================================================================== */
-
-#info-header {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-}
-
-#info-header img {
+.directory-container .left {
     height: 100%;
-    width: 25%;
+} 
+
+sidebar-directory {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
 }
 
-#info-header h1 {
-    margin: 0;
+sidebar-directory .directory-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-top: 0.25rem solid var(--primary-accent);
+    height: 100%;
 }
 
-.header-divider {
-    height: 1rem;
-    width: 50%;
-    background-color: var(--secondary-accent);
-    margin-bottom: 1rem;
-}
-
-#frog-ix-image {
-    width: 20rem;
-}
-
-/* BOTTOM ARROW THAT GOES BACK TO THE TOP OF THE PAGE ========================================================================================================== */
-
-.back-to-top {
-    border: 0.15rem solid var(--dark-text);
+sidebar-directory .directory-links a {
     display: flex;
     align-items: center;
-    justify-content: center;
-    align-self: end;
+    gap: 2rem;
+    height: 100%;
+    padding-right: 1rem;
+
     text-decoration: none;
-    background-color: var(--primary-accent);
-
-    width: 4rem;
+    border-bottom: 0.25rem solid var(--primary-accent);
+    height: 100%;
 }
 
-    .back-to-top:hover {
-        background-color: var(--secondary-accent);
-    }
-
-.back-to-top h4 {
-    font-size: 2rem;
-    color: var(--background);
+sidebar-directory .directory-links a:hover {
+    background-color: var(--secondary-accent);
 }
 
-    .back-to-top:hover h4 {
-        color: var(--dark-text);
-    }
+sidebar-directory .directory-links a span {
+    margin: 0.25rem 0;
+}
 
-/* TOOL TIP ===================================================================================================================================================== */
+/* SPOILER HIDING =========================================================================================================================================================== */
 
-/* https://www.w3schools.com/howto/howto_css_tooltip.asp <= original source modifications made for centering and positioning */
+.spoiler-tags .single-line, .spoiler-tags .spoilers span {
+    background-color: var(--dark-text);
+    padding: 0.10rem 0.05rem;
+}
 
-.hover-note {
+.spoiler-tags .single-line:hover, .spoiler-tags .spoilers:hover span {
+    background-color: var(--background);
+}
+
+.no-spoilers .spoilers, .no-spoilers .single-line {
+    display: none;
+}
+
+/* FOOTNOTES ================================================================================================================================================================ */
+
+.footnote {
     position: relative;
+    text-decoration: none;
 }
 
-.hover-note .tooltiptext {
+.footnote .footnote-text {
     visibility: hidden;
     padding: 1rem;
 
-    width: var(--tool-tip-box-width);
+    width: 500px;
     background-color: var(--dark-text);
-    border-radius: 6px;
+    border-radius: 0.25rem;
 
     position: absolute;
     z-index: 1;
-    right: 250%;
-    top: -50%;
 
     opacity: 0;
 
@@ -304,63 +236,62 @@ body#article {
     text-align: left;
 }
 
-.hover-note .tooltiptext p, .hover-note .tooltiptext i, .hover-note .tooltiptext a {
-    color: var(--background);
-    text-align: left;
-    overflow: hidden;
-}
-
-.hover-note .tooltiptext::after {
+.footnote .footnote-text::after {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 100%;
-    margin-left: -5px;
-    border-width: 5px;
     border-style: solid;
     border-color: var(--dark-text);
-
+    border-width: 10px;
     transform: rotate(45deg);
 }
 
-.hover-note:hover .tooltiptext {
+.footnote .footnote-text[horizontal-direction="left"] { right: -300%; }
+.footnote .footnote-text[horizontal-direction="right"] { left: -300%; }
+.footnote .footnote-text[vertical-direction="up"] { bottom: 175% }
+.footnote .footnote-text[vertical-direction="down"] { top: 175% }
+.footnote .footnote-text[horizontal-direction="right"]::after { left: 4%; }
+.footnote .footnote-text[horizontal-direction="left"]::after { right: 4%}
+
+.footnote .footnote-text[vertical-direction="down"]::after {
+    top: 0%;
+    margin-top: -5px;
+}
+
+.footnote .footnote-text[vertical-direction="up"]::after {
+    bottom: 0%;
+    margin-bottom: -5px;
+}
+
+.footnote .footnote-text i, .footnote .footnote-text a {
+    color: var(--background);
+}
+
+.footnote .footnote-text[type="footnote"] {
+    color: var(--background);
+}
+
+.footnote:hover .footnote-text {
     visibility: visible;
     opacity: 1;
 }
 
-.spoiler-tags .hover-note .tooltiptext {
-    background-color: var(--dark-text);
-    color: var(--background)
-}
-
-.spoiler-tags .hover-note:hover .tooltiptext:nth-child(2) {
-    background-color: red;
-}
-
-.spoiler-tags .hover-note:hover .tooltiptext {
-    background-color: var(--dark-text);
+.footnote sup {
+    margin: 0 0.25rem;
+    font-size: 1rem;
 }
 
 /* MEDIA QUERIES ================================================================================================================== */
 
+@media screen and (max-width: 1450px) {
+    .footnote .footnote-text { width: 300px; }
+} 
+
 @media screen and (max-width: 1250px) {
-    left-sidebar {
-        background-image: url("../assets/tifa_no_background.png");
-        background-position: right;
-        background-size: cover;
-
-        min-width: 30%;
+    .image-quote {
+        flex-direction: column;
     }
 
-        .accessible left-sidebar {
-            background-image: none;
-        }
-
-    left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-        width: 100%;
-    }
-
-    .two-column  {
+    .two-column {
         flex-direction: column;
     }
 } 
@@ -368,51 +299,110 @@ body#article {
 @media screen and (max-width: 1100px) {
     left-sidebar {
         background-image: none;
-        top: 0;
-
         height: unset;
     }
 
-        left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-            width: 100%;
-        }
+    .directory-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
 
-        .directory-container {
-            flex-direction: column;
-            gap: 2rem;
-        }
+    .directory-container .right {
+        width: 100%;
+    } 
 
-        .directory-container .right {
-            width: 100%;
-        } 
-
-        .article-header .spoiler-options .button-text {
-            font-size: 1rem;
-        }
+    .article-header .spoiler-options .button-text {
+        font-size: 1rem;
+    }
 
     #article main {
         padding: 0 2rem;
     }
-}
 
-
-@media screen and (max-width: 900px) {
-    .text-section {
-        gap: 1rem;
-    }
-}
-
-@media screen and (max-width: 650px) {
     .image-quote {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        width: 100%;
+
+        margin: 2rem 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        margin: 0;
         flex-direction: column;
+    }
+
+    #article left-sidebar {
+        top: 0;
+        height: unset;
+        position: fixed;
+    }
+
+    .view-sidebar#article left-sidebar {
+        height: 100vh;
+    }
+
+    .footnote .footnote-text { display: none; }
+
+    section {
         gap: 1rem;
     }
 
-    .image-quote img {
-        width: 100%;
+    main .toggle-button .button-text {
+        font-size: 0.75rem;
     }
 
-    .image-quote .quote {
-        width: 75%;
+    main {
+        margin-top: 4rem;
     }
+
+    left-sidebar {
+        min-width: unset;
+        width: 100%;
+        background-color: var(--primary-accent);
+        position: fixed;
+        z-index: 1;
+
+        padding: 0.25rem;
+    }
+
+    .accessible left-sidebar {
+        background-color: var(--dark-text);
+    }
+
+    left-sidebar #mobile-sidebar {
+        display: flex;
+        align-items: center;
+        height: 2.5rem;
+    }
+
+    left-sidebar .sidebar-stack {
+        display: none;
+    }
+
+    .view-sidebar left-sidebar #mobile-sidebar {
+        margin-bottom: 1rem;
+    }
+
+    left-sidebar #mobile-sidebar #sidebar-button {
+        background-color: var(--primary-accent);
+        border: unset;
+    }
+
+    .accessible left-sidebar #mobile-sidebar #sidebar-button {
+        background-color: var(--dark-text);
+    }
+
+    left-sidebar #mobile-sidebar #sidebar-button svg {
+        fill: var(--background);
+    }
+
+    #main-review-content {
+        margin-bottom: 0px;
+    }
+
 }
