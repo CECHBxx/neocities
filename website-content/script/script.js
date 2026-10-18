@@ -1,27 +1,15 @@
-let cookies = {stylePreference: null, viewPreference: null};
-let currentStyling = "default";
+let cookies = {style: null, view: null};
+let currentStyling = "standard";
 
-const defaultToggle = document.querySelector("#default-option");
-const accessibleToggle = document.querySelector("#accessible-option");
+// let spoilerTagsToggle;
+// let showSpoilersToggle;
+// let dontShowSpoilersToggle;
+// let article;
+// let currentSpoilers;
 
-let spoilerTagsToggle;
-let showSpoilersToggle;
-let dontShowSpoilersToggle;
-let article;
-let currentSpoilers;
-
-let noteStart = "(NoteStart:"
-let noteEnd = " :NoteEnd)"
-let spoilerMark = "!S"
-let footnoteCount = 0;
-
-defaultToggle.addEventListener("click", (event) => {
-    switchView(accessibleToggle, defaultToggle, "default");
-});
-
-accessibleToggle.addEventListener("click", (event) => {
-    switchView(defaultToggle, accessibleToggle, "accessible");
-});
+const isInvalid = (value) => {
+    return (value == null || value == undefined)
+}
 
 const switchView = (current, next, type) => {
     if (currentStyling != `${type}`) {
@@ -36,45 +24,35 @@ const switchView = (current, next, type) => {
     }
 }
 
-const switchSpoilerView = (next, type) => {
-    if (currentSpoilers != next) {
-        article.classList = `article-content page-text-content ${type}`;
-        next.classList.add("selected-toggle");
-        currentSpoilers.classList.remove("selected-toggle");
-        currentSpoilers = next;
-    }
-}
+// const switchSpoilerView = (next, type) => {
+//     if (currentSpoilers != next) {
+//         article.classList = `article-content page-text-content ${type}`;
+//         next.classList.add("selected-toggle");
+//         currentSpoilers.classList.remove("selected-toggle");
+//         currentSpoilers = next;
+//     }
+// }
 
-if (document.querySelector(".spoiler-options") != undefined) {
-    spoilerTagsToggle = document.querySelector("#hover-option");
-    dontShowSpoilersToggle = document.querySelector("#no-spoilers-option");
-    showSpoilersToggle = document.querySelector("#spoilers-option");
+// if (document.querySelector(".spoiler-options") != undefined) {
+//     spoilerTagsToggle = document.querySelector("#hover-option");
+//     dontShowSpoilersToggle = document.querySelector("#no-spoilers-option");
+//     showSpoilersToggle = document.querySelector("#spoilers-option");
 
-    currentSpoilers = showSpoilersToggle;
-    article = document.querySelector("#main-review-content");
+//     currentSpoilers = showSpoilersToggle;
+//     article = document.querySelector("#main-review-content");
 
-    spoilerTagsToggle.addEventListener("click", () => {
-        switchSpoilerView(spoilerTagsToggle, "spoiler-tags");
-    });
+//     spoilerTagsToggle.addEventListener("click", () => {
+//         switchSpoilerView(spoilerTagsToggle, "spoiler-tags");
+//     });
 
-    showSpoilersToggle.addEventListener("click", () => {
-        switchSpoilerView(showSpoilersToggle, "spoilers");
-    });
+//     showSpoilersToggle.addEventListener("click", () => {
+//         switchSpoilerView(showSpoilersToggle, "spoilers");
+//     });
 
-    dontShowSpoilersToggle.addEventListener("click", () => {
-        switchSpoilerView(dontShowSpoilersToggle, "no-spoilers");
-    });
-}
-
-const setStyleDefault = (cookieValue) => {
-    if (cookieValue === null || cookieValue === "default") {
-        defaultToggle.classList.add("selected-toggle")
-        cookieValue = "default";
-    } else if (cookieValue === "accessible") accessibleToggle.classList.add("selected-toggle");
-
-    currentStyling = cookieValue;
-    document.body.classList.add(currentStyling);
-}
+//     dontShowSpoilersToggle.addEventListener("click", () => {
+//         switchSpoilerView(dontShowSpoilersToggle, "no-spoilers");
+//     });
+// }
 
 const fetchCookies = () => {
     let cookieList = document.cookie.split(";");
@@ -85,11 +63,12 @@ const fetchCookies = () => {
         let cookieName = cookieList[i].split("=")[0].trim();
         let cookieValue = cookieList[i].split("=")[1].trim();
 
-        if (cookieName === "style-preference") cookies.stylePreference = cookieValue;
-        if (cookieName === "view-preference") cookies.viewPreference = cookieValue;
+        if (cookieName === "style-preference") cookies.style = cookieValue;
+        if (cookieName === "view-preference") cookies.view = cookieValue;
     }
 
-    setStyleDefault(cookies.stylePreference);
+    if (cookies.style == null) cookies.style = "standard";
+    if (cookies.view == null) cookies.view = "grid";
 }
 
 // BUILDING FOOTNOTES DYNAMICALLY ==========================================================================================================================================
@@ -160,6 +139,50 @@ const setUpSideBar = () => {
     });
 }
 
-setUpFootnotes();
-setUpSideBar();
 fetchCookies();
+setUpFootnotes();
+
+const setUpToggleButtons = () => {
+    let toggleButtons = document.querySelectorAll(".toggle-button");
+
+    for (let i = 0; i < toggleButtons.length; i++) {
+        let toggleGroup = toggleButtons[i];
+        let type = toggleGroup.getAttribute("type");
+        let cookieValue = (type in cookies) ? cookies[type]: null;
+        let buttons = Array.from(toggleGroup.querySelectorAll("button"));
+        setUpToggle(toggleGroup.getAttribute("type"), cookieValue, buttons, toggleGroup.getAttribute("effected-container"))
+    }
+}
+
+const toggleAction = (type, selectedButton, effectedSiblings, effectedContainer, addToContainer) => {
+    selectedButton.classList.add("selected-toggle");
+    effectedContainer.setAttribute(type, addToContainer)
+
+    for (let i = 0; i < effectedSiblings.length; i++) {
+        effectedSiblings[i].classList.remove("selected-toggle");
+    }
+
+    document.cookie = `${type}-preference=${addToContainer};path=/`;
+}
+
+const setUpToggle = (type, cookieValue, buttonList, effectedContainer) => {
+    let effectedContainerElement = document.querySelector(effectedContainer);
+
+    if (isInvalid(type) || isInvalid(buttonList) || isInvalid(effectedContainerElement)) return;
+
+    for (let i = 0; i < buttonList.length; i++) {
+        let toggleButton = buttonList[i];
+        let siblings = buttonList.slice(0, i).concat(buttonList.slice(i + 1))
+        let buttonValue = toggleButton.getAttribute("value");
+
+        if (cookieValue != null && buttonValue == cookieValue) {
+            toggleAction(type, toggleButton, siblings, effectedContainerElement, buttonValue);
+        }
+
+        toggleButton.addEventListener("click", () => {
+            toggleAction(type, toggleButton, siblings, effectedContainerElement, buttonValue);
+        });
+    }
+}
+
+setUpToggleButtons();

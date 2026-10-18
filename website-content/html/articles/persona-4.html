@@ -12,10 +12,11 @@
     <script type="module" src="../../script/script.js" defer></script>
     </head>
 
-    <body id="article">
+    <body>
         <left-sidebar></left-sidebar>
-        <main>
-            <section class="article-header">
+
+        <article>
+            <header>
                 <h1 id="article-title">I Do Not Like Persona 4</h1>
                 <img src="../../assets/article-specific/P4G/P4G_header.png" alt="An in game screenshot of Persona 4. The party is currently in the 'TV world' hub. It looks like a stage set covered in fog. A set of stacked TVs sits near the north of the platform. Yukiko, Naoto, Chie, Teddie, Rise Fox, Yosuke, and Kanji are all standing in a circle surrounding Yu. A blue-green duotone effect and a halftone effect have been applied to the image.">
                 <div class="backloggd-notice">
@@ -26,22 +27,20 @@
                     </div>
                 </div>
                 <h3 class="written-on">Written 05/25/25</h3>
-            </section>
+            </header>
 
-            <section class="directory-container">
-                <div class="right">
-                    <div class="text-section-no-margin">
-                        <p><i>Persona 4 Golden</i> is a bumbling mess. It is a game about truth, but this truth coincides with societal expectations and standards. Inaba exists as an example of how rumors and lies can dilute a town, but these rumors are pushed out of the main plot the moment their arc is over.</p>
-
-                        <p>The gameplay is lethargic and tedious. The story is obnoxious and cruel.</p>
+            
+            <main>
+                <section class="directory-container">
+                    <div class="two-column">
+                        <div class="text-section-no-margin">
+                            <p><i>Persona 4 Golden</i> is a bumbling mess. It is a game about truth, but this truth coincides with societal expectations and standards. Inaba exists as an example of how rumors and lies can dilute a town, but these rumors are pushed out of the main plot the moment their arc is over.</p>
+    
+                            <p>The gameplay is lethargic and tedious. The story is obnoxious and cruel.</p>
+                        </div>
+                        <sidebar-directory></sidebar-directory>
                     </div>
-                </div>
-                <div class="left">
-                    <sidebar-directory></sidebar-directory>
-                </div>
-            </section>
-
-            <div id="main-review-content" class="spoilers">
+                </section>
 
                 <section>
                     <h2 id="kanji-section">KANJI</h2>
@@ -528,7 +527,7 @@
                 </section>
 
                 <a href="#" class="back-to-top"><h4>^</h4></a>
-            </div>
-        </main>
+            </main>
+        </article>
     </body>
 </html>

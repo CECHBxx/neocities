@@ -13,24 +13,24 @@
     <script type="module" src="../../script/script.js" defer></script>
     </head>
 
-    <body id="article">
+    <body>
         <left-sidebar></left-sidebar>
 
-        <main>
-            <section class="article-header">
+        <article>
+            <header>
                 <h1 id="article-title">Hotel World</h1>
                 <img src="../../assets/article-specific/hotel-dusk-header.png" alt="Promotional art from Hotel Dusk. Kyle Hyde stands in the middle of a road next to his car. He is a young adult with blond hair, he is wearing a dark workers jacket. The car is from the 70s and boxy. The surrounding area is a desert with shrubs. A green and blue duotone effect was applied to the image along with a halftone effect.">
 
-                <div class="toggle-button toggle-horizontal box-shadow spoiler-options">
-                    <button id="spoilers-option" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
-                    <button id="hover-option" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
-                    <button id="no-spoilers-option" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
+                <div effected-container="main" class="toggle-button toggle-horizontal box-shadow spoiler-options" type="spoiler-view">
+                    <button value="show" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
+                    <button value="hover" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
+                    <button value="hide" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
                 </div>
 
                 <h3 class="written-on">Written 10/14/26</h3>
-            </section>
+            </header>
 
-            <div id="main-review-content" class="spoilers">
+            <main spoiler-view="show">
 				<section>
 					<h2>Story</h2>
 
@@ -110,7 +110,9 @@
 
                     <foot-note-full number="4"><i>Ace Attorney</i>, <i>Danganronpa</i>, third example, etc.</foot-note-full>
 				</section>
-            </div>
-        </main>
+
+                <a href="#" class="back-to-top"><h4>^</h4></a>
+            </main>
+        </article>
     </body>
 </html>

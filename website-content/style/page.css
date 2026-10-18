@@ -1,46 +1,57 @@
-#article left-sidebar {
-    height: 90vh;
-    position: sticky;
-    top: 5vh;
-}
-
 body {
     margin-bottom: 0rem;
     gap: 2.5rem;
 }
 
-body#article main {
+left-sidebar {
+    height: 90vh;
+    position: sticky;
+    top: 5vh;
+    width: 230px;
+}
+
+left-sidebar #secondary-sidebar {
+    display: flex;
+    height: 90vh;
+}
+
+left-sidebar #home-page-sidebar, #secondary-sidebar {
+    display: none;
+}
+
+body article {
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
 }
 
 /* ARTICLE STYLING ========================================================================================================================================================== */
 
-.article-header {
+header {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 2rem;
 }
     
-.article-header h3 {
+header h3 {
     align-self: end;
 }
 
-.article-header::after {
+header::after {
     content: "";
     height: 0.5rem;
     width: 100%;
     background-color: var(--primary-accent);
 }
 
-.article-header img {
+header img {
     width: 100%;
     max-height: 40vh;
     object-fit: cover;
 }
 
-#main-review-content {
+main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -48,18 +59,18 @@ body#article main {
     margin-bottom: 5vh;
 }
 
-#main-review-content img:not(.keep-height) {
+main img:not(.keep-height) {
     object-fit: contain;
     max-height: 50vh;
     width: 100%;
 }
 
-#main-review-content h1, h2, h3 {
+main h1, h2, h3 {
     margin-top: 0rem 2rem;
     margin-bottom: 1rem;
 }
 
-#main-review-content section, .text-section-no-margin {
+main section, .text-section-no-margin {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -77,7 +88,7 @@ body#article main {
     margin: 2rem 0;
 }
 
-#main-review-content .image-quote img {
+main .image-quote img {
     width: 50%;
 }
 
@@ -137,23 +148,12 @@ tr {
 /* DIRECTORY SECTION ======================================================================================================================================================== */
 
 .directory-container {
+    padding: 0rem 4rem;
+}
+
+.directory-container .two-column div {
     width: 100%;
-
-    display: flex;
-    align-self: center;
-    align-items: center;
-    justify-content: s;
-
-    gap: 10rem;
 }
-
-.directory-container .right {
-    width: 40%;
-}
-
-.directory-container .left {
-    height: 100%;
-} 
 
 sidebar-directory {
     display: flex;
@@ -161,13 +161,14 @@ sidebar-directory {
     justify-content: space-between;
     gap: 1rem;
     height: 100%;
+    width: 100%;
+    max-width: 50%;
 }
 
 sidebar-directory .directory-links {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border-top: 0.25rem solid var(--primary-accent);
     height: 100%;
 }
 
@@ -180,7 +181,10 @@ sidebar-directory .directory-links a {
 
     text-decoration: none;
     border-bottom: 0.25rem solid var(--primary-accent);
-    height: 100%;
+}
+
+sidebar-directory .directory-links a:first-child {
+    border-top: 0.25rem solid var(--primary-accent);
 }
 
 sidebar-directory .directory-links a:hover {
@@ -193,16 +197,26 @@ sidebar-directory .directory-links a span {
 
 /* SPOILER HIDING =========================================================================================================================================================== */
 
-.spoiler-tags .single-line, .spoiler-tags .spoilers span {
+main[spoiler-view="hover"] .single-line, main[spoiler-view="hover"] .spoilers span {
     background-color: var(--dark-text);
     padding: 0.10rem 0.05rem;
 }
 
-.spoiler-tags .single-line:hover, .spoiler-tags .spoilers:hover span {
+main[spoiler-view="hover"] img.spoilers { /* image spoiler */
+    opacity: 0.75;
+    filter: brightness(0%);
+}
+
+main[spoiler-view="hover"] img.spoilers:hover {
+    opacity: 1;
+    filter: brightness(100%);
+}
+
+main[spoiler-view="hover"] .single-line:hover, main[spoiler-view="hover"] .spoilers:hover span, main[spoiler-view="hover"] img.spoilers:hover {
     background-color: var(--background);
 }
 
-.no-spoilers .spoilers, .no-spoilers .single-line {
+main[spoiler-view="hide"] .spoilers, .no-spoilers .single-line {
     display: none;
 }
 
@@ -296,113 +310,75 @@ sidebar-directory .directory-links a span {
     }
 } 
 
-@media screen and (max-width: 1100px) {
-    left-sidebar {
-        background-image: none;
-        height: unset;
-    }
-
-    .directory-container {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .directory-container .right {
-        width: 100%;
-    } 
-
-    .article-header .spoiler-options .button-text {
-        font-size: 1rem;
-    }
-
-    #article main {
-        padding: 0 2rem;
-    }
-
-    .image-quote {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 3rem;
-        width: 100%;
-
-        margin: 2rem 0;
-    }
-}
-
-@media screen and (max-width: 1000px) {
+@media (max-width: 1000px), (max-height: 600px) {
     body {
+        gap: 0rem;
+    }
+
+    article {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+        padding: 0rem 2rem;
+    }
+
+    #home-page {
+        align-items: unset;
+        flex-direction: column
+    }
+
+    body, main {
+        padding: 0;
         margin: 0;
-        flex-direction: column;
     }
 
-    #article left-sidebar {
-        top: 0;
-        height: unset;
-        position: fixed;
-    }
-
-    .view-sidebar#article left-sidebar {
-        height: 100vh;
-    }
-
-    .footnote .footnote-text { display: none; }
-
-    section {
-        gap: 1rem;
-    }
-
-    main .toggle-button .button-text {
-        font-size: 0.75rem;
+    main[view="list"], main[view="grid"] {
+        overflow-y: unset;
+        padding-right: 0rem;
     }
 
     main {
-        margin-top: 4rem;
+        margin-top: 3rem;
+    }
+
+    body main, body aside {
+        height: unset;
+    }
+
+    main .article-preview {
+        margin-bottom: 0.25rem;
     }
 
     left-sidebar {
-        min-width: unset;
-        width: 100%;
-        background-color: var(--primary-accent);
-        position: fixed;
-        z-index: 1;
-
-        padding: 0.25rem;
+        width: unset;
+        min-width: 0rem;
+        height: unset;
     }
 
-    .accessible left-sidebar {
-        background-color: var(--dark-text);
+    body:not(#home-page) left-sidebar {
+        min-width: 0rem;
     }
 
-    left-sidebar #mobile-sidebar {
-        display: flex;
-        align-items: center;
-        height: 2.5rem;
-    }
-
-    left-sidebar .sidebar-stack {
+    left-sidebar #secondary-sidebar {
         display: none;
     }
 
-    .view-sidebar left-sidebar #mobile-sidebar {
-        margin-bottom: 1rem;
+    left-sidebar #mobile-sidebar {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .toggle-button {
+        flex-direction: column;
+        height: 10rem;
     }
 
-    left-sidebar #mobile-sidebar #sidebar-button {
-        background-color: var(--primary-accent);
-        border: unset;
+    .toggle-button button {
+        width: 100%;
+        height: 100%;
     }
 
-    .accessible left-sidebar #mobile-sidebar #sidebar-button {
-        background-color: var(--dark-text);
+    .toggle-button button .button-text {
+        font-size: 1rem;
     }
-
-    left-sidebar #mobile-sidebar #sidebar-button svg {
-        fill: var(--background);
-    }
-
-    #main-review-content {
-        margin-bottom: 0px;
-    }
-
 }

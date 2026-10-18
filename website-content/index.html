@@ -9,26 +9,22 @@
         <link rel="stylesheet" href="./style/home.css" />
         <link rel="icon" type="image/x-icon" href="./assets/jackfrost.png">
         
+        <script type="module" src="./script/homePage.js" defer></script>
         <script type="module" src="./script/components.js" defer></script>
         <script type="module" src="./script/script.js" defer></script>
-        <script type="module" src="./script/homePage.js" defer></script>
     </head>
 
     <body id="home-page">
         <left-sidebar></left-sidebar>
 
-        <main id="article-container">
-            <!-- <h1>POSTS</h1> -->
-
-            <div id="article-list"> <!-- posts added here through javascript --> </div>
-        </main>
+        <main><!-- posts added here through javascript --></main>
 
         <aside class="sidebar-stack">
             
-            <div id="top-container">
-                <div class="toggle-button toggle-horizontal box-shadow">
-                    <button id="grid-option" class="view-toggle"><div class="button-text">Grid</div></button>
-                    <button id="list-option" class="view-toggle"><div class="button-text">List</div></button>
+            <div class="top-container">
+                <div effected-container="main" class="toggle-button toggle-horizontal box-shadow" type="view">
+                    <button class="view-toggle" value="grid"><div class="button-text">Grid</div></button>
+                    <button class="view-toggle" value="list"><div class="button-text">List</div></button>
                 </div>
 
                 <!-- <a href="/" class="single-button single-button-wide box-shadow">
@@ -36,7 +32,7 @@
                     <div class="button-text">Search</div>
                 </a> -->
             </div>
-            <div id="bottom-container">
+            <div class="bottom-container">
                 <img src="./assets/aiai.png" alt="An image of AiAi from Super Monkey Ball. He is a monkey with large ears and pacman type cartoon eyes. The image has a transparent background, a blue-green duotone effect, and a halftone effect. AiAi is currently fishing, he has a large fish on the line close to his body. He is wearing a hat and a jacket.">
                 <a href="./html/beloveds.html"><img src="./assets/jackfrost.png" alt="An image of Jack Frost from Shin Megami Tensei. He is a cartoon snowman. He has a blue hat with pointed ends which look like horns. The hat goes around his entire face and has a trim near his neck with little bells. The image has a transparent background, a blue-green duotone effect, and a halftone effect. Jack frost is drawn in a cartoon style and he is sitting on the ground."></a>
             </div>

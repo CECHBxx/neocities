@@ -8,9 +8,12 @@
     font-family: "Orbitron";
 
     /* COLORS */
-
     --background: #ebebeb;
+    --button-text-color: #ebebeb;
+    --button-base-color: #403E3E;
+    --button-border-color: #403E3E;
     --dark-text: #403E3E;
+    --primary-button-text-color: #ebebeb;
     --primary-accent: #545ca3;
     --secondary-accent: #a4c76e;
     --accessible-underline: #f15656;
@@ -19,14 +22,26 @@
     --fade-time: 0.5s;
 
     scrollbar-color: var(--primary-accent) var(--dark-text);
+    scrollbar-width: thin;
 
     color: var(--dark-text);
 }
 
-.accessible {
+body[style="accessible"] {
     --background: #f8f8f8;
+    --button-text-color: #f8f8f8;
+    --button-base-color: #1f1f1f;
+    --button-border-color: #1f1f1f;
     --dark-text: #1f1f1f;
+    --primary-button-text-color: #f8f8f8;
 }
+
+/* @media (prefers-color-scheme: dark), (pointer:none), (pointer:coarse) {
+    * {
+        --dark-text: #ebebeb;
+        --background: #403E3E;
+    }
+} */
 
 @keyframes fadeIn {
     0% { opacity: 0; }
@@ -70,14 +85,14 @@ sup, sub {
 }
 
 a {
-    text-decoration: underline 0.20rem var(--primary-accent);
+    text-decoration: underline 0.15rem var(--primary-accent);
 }
 
 a:hover {
     text-decoration-color: var(--secondary-accent);
 }
 
-.accessible  a:hover {
+body[style="accessible"]  a:hover {
     text-decoration-color: var(--accessible-underline);
 }
 
@@ -111,34 +126,94 @@ body {
     margin: 5vh;
 }
 
+.view-sidebar, .view-sidebar main {
+    overflow: hidden;
+}
+
 /* LEFT SIDEBAR ============================================================================================================================================================= */
 
 left-sidebar, main, aside {
     height: 100%;
 }
 
-left-sidebar {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right;
-
-    background-image: url(../assets/sidebar-background.png);
-    background-size: contain;
-
-    min-width: 440px;
+left-sidebar #home-page-sidebar, left-sidebar #secondary-sidebar {
+    display: none;
+    height: 100%;
 }
 
-left-sidebar #mobile-sidebar, left-sidebar #left-sidebar-image {
+left-sidebar #mobile-sidebar {
     display: none;
 }
 
-left-sidebar #left-sidebar-image {
-    width: 100%;
+left-sidebar #home-page-sidebar {
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    background-image: url(../assets/sidebar-background.png);
+
+    min-width: 440px;
 }
 
 left-sidebar .bottom-container {
     width: 35%;
 }
+
+/* SMALLER SIDEBAR ============================================================================================ */
+
+#secondary-sidebar {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+#secondary-sidebar .image-link-button .button-text {
+    font-size: 1rem;
+}
+
+#secondary-sidebar #left-sidebar-image img {
+    height: 7rem;
+}
+
+#secondary-sidebar .single-button {
+    height: 3rem;
+}
+
+#secondary-sidebar img {
+    width: 100%;
+}
+
+#secondary-sidebar .toggle-button {
+    width: 100%;
+}
+
+/* MOBILE SIDE BAR ============================================================================================ */
+
+#mobile-sidebar {
+    display: flex;
+    background-color: var(--dark-text);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0.25rem 1rem;
+}
+
+#mobile-sidebar .links {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    gap: 1rem;
+}
+
+#mobile-sidebar .links a {
+    color: var(--background);
+}
+
+/* ============================================================================================ */
 
 .sidebar-stack {
     display: flex;
@@ -150,14 +225,38 @@ left-sidebar .bottom-container {
 .sidebar-stack .top-container {
     display: flex;
     flex-direction: column;
-    height: 50%;
-    gap: 2rem;
+}
+
+.sidebar-stack .top-container .single-button {
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-stack .top-container .single-button:last-child {
+    margin-bottom: 0;
 }
 
 .sidebar-stack .bottom-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+/* ACCESSIBLE SIDEBAR STYLING */
+
+body[style="accessible"].view-sidebar left-sidebar .toggle-button button {
+    background-color: var(--dark-text);
+}
+
+body[style="accessible"].view-sidebar left-sidebar .toggle-button .selected-toggle, body[style="accessible"].view-sidebar left-sidebar .toggle-button .selected-toggle {
+    background-color: var(--secondary-accent);
+}
+
+body[style="accessible"].view-sidebar left-sidebar .toggle-button .selected-toggle .button-text, .view-sidebar left-sidebar .toggle-button .selected-toggle {
+    color: var(--dark-text);
+}
+
+body[style="accessible"].view-sidebar left-sidebar .toggle-button button .button-text {
+    color: var(--background);
 }
 
 /* ELEMENT STYLING ========================================================================================================================================================== */
@@ -170,17 +269,82 @@ left-sidebar .bottom-container {
     text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
 }
 
+.verticle-text {
+    text-transform: uppercase;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+}
+
+/* IMAGE BUTTON ============================================================================================================================================================= */
+
+.image-link-button {
+    display: flex;
+    border: 0.25rem solid var(--primary-accent);
+
+    position: relative;
+    line-height: 1rem;
+    min-height: 15%;
+    aspect-ratio: 1/1;
+    /* min-width: 15%; */
+}
+
+.image-link-button:hover {
+    border: 0.25rem solid var(--secondary-accent);
+}
+
+.image-link-button img {
+    object-fit: contain;
+    padding: 0.5rem;
+}
+
+body[style="accessible"] .image-link-button .button-text {
+    --background: #f8f8f8;
+}
+
+.image-link-button .button-text {
+    background-color: var(--background);
+    background-size: 50%, 50%;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+
+    position: relative;
+}
+
+.image-link-button .button-text .text-background {
+    position: absolute;
+    background-color: var(--background);
+    height: 100%;
+    width: 100%;
+    top: 0%;
+}
+
+.image-link-button > .button-text, .image-link-button .text-split .button-text:nth-child(2) {
+    position: absolute;
+    right: -7%;
+    top: -7%;
+}
+
+.image-link-button .text-split .button-text:nth-child(1) {
+    margin: 0rem 1rem;
+    padding-left: 0.5rem;
+    position: absolute;
+    right: -7%;
+    top: -7%;
+    letter-spacing: 0.5rem;
+}
+
 /* BUTTONS ================================================================================================================================================================== */
 
 .single-button {
     display: flex;
     flex-direction: column;
 
-    border: solid var(--dark-text) 1px;
+    border: solid var(--button-border-color) 1px;
     color: var(--background);
     text-decoration: none;
 
-    background-color: var(--dark-text);
+    background-color: var(--button-base-color);
     width: 100%;
     align-items: center;
 }
@@ -198,7 +362,7 @@ left-sidebar .bottom-container {
 
 .single-button .button-text {
     font-family: "Orbitron";
-    color: var(--background);
+    color: var(--button-text-color);
     width: 100%;
     align-content: center;
     
@@ -212,9 +376,6 @@ left-sidebar .bottom-container {
 
 .single-button-tall .button-text {
     letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    writing-mode: vertical-lr;
-    text-orientation: upright;
 }
 
 .single-button-wide {
@@ -230,14 +391,27 @@ left-sidebar .bottom-container {
 
 .toggle-button {
     display: flex;
+    container: toggle-button / inline-size;
 }
 
 .toggle-button button {
-    border: solid var(--dark-text) 1px;
+    border: solid var(--button-border-color) 1px;
     background-color: var(--background);
     
     width: 100%;
-    font-size: 1.25rem;
+    font-size: 1.25em;
+}
+
+@container toggle-button (max-width: 200px)  {
+    .toggle-vertical button, .toggle-horizontal button {
+        font-size: 1em;
+    }
+}
+
+@container toggle-button (max-width: 100px)  {
+    .toggle-vertical button, .toggle-horizontal button {
+        font-size: 0.75em;
+    }
 }
 
 .toggle-button button:hover {
@@ -250,7 +424,7 @@ left-sidebar .bottom-container {
 }
 
 .toggle-button .selected-toggle .button-text {
-    color: var(--background);
+    color: var(--primary-button-text-color);
 }
 
 .toggle-button .selected-toggle:hover .button-text {
@@ -274,192 +448,42 @@ left-sidebar .bottom-container {
     height: 5rem;
 }
 
-/* ========================================================================================================================================================================== */
-
-aside {
-    width: 15%;
-}
-
-aside .right-top-elements {
-    width: 100%;
-}
-
-aside .right-top-elements .toggle-button {
-    width: 100%;
-}
-
 /* MEDIA QUERIES AND RESPONSIVE SIZING ====================================================================================================================================== */
 
-.view-sidebar left-sidebar {
-    height: 100vh;
+@media screen and (min-width: 1600px) {
+    left-sidebar #home-page-sidebar {
+        display: flex;
+    }
 }
 
-.view-sidebar, .view-sidebar main {
-    overflow: hidden;
-}
+@media screen and (max-width: 1600px), (max-height: 800px) {
+    body:not(#home-page) left-sidebar {
+        min-width: 230px;
+    }
 
-.view-sidebar left-sidebar .sidebar-stack {
-    justify-content: unset;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-    height: unset;
-}
-
-.view-sidebar left-sidebar {
-    justify-content: unset;
-}
-
-.view-sidebar left-sidebar .single-button .color-strip {
-    height: 0;
-}
-
-.view-sidebar left-sidebar .single-button {
-    height: unset;
-    min-height: unset;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 0.5rem;
-    height: 2rem;
-}
-
-.view-sidebar left-sidebar .single-button .color-strip {
-    display: none;
-}
-
-.view-sidebar left-sidebar .sidebar-stack .top-container, .view-sidebar left-sidebar .sidebar-stack .bottom-container {
-    align-items: center;
-    width: 100%;
-    gap: 0;
-}
-
-.view-sidebar left-sidebar .toggle-button {
-    flex-direction: row;
-    width: 100%;
-    height: 2rem;
-}
-
-.view-sidebar left-sidebar .toggle-button button {
-    height: 2rem;
-}
-
-.accessible.view-sidebar left-sidebar .toggle-button button {
-    background-color: var(--dark-text);
-}
-
-.accessible.view-sidebar left-sidebar .toggle-button .selected-toggle, .accessible.view-sidebar left-sidebar .toggle-button .selected-toggle {
-    background-color: var(--secondary-accent);
-}
-
-.accessible.view-sidebar left-sidebar .toggle-button .selected-toggle .button-text, .view-sidebar left-sidebar .toggle-button .selected-toggle {
-    color: var(--dark-text);
-}
-
-.accessible.view-sidebar left-sidebar .toggle-button button .button-text {
-    color: var(--background);
-}
-
-
-@media screen and (max-width: 1450px) {
-    left-sidebar {
-        background-image: none;
-        min-width: unset;
+    body#home-page left-sidebar {
         width: 15%;
-        min-width: 10rem;
     }
 
-    left-sidebar #left-sidebar-image {
-        display: block;
-    }
-
-    left-sidebar .sidebar-stack {
-        justify-content: unset;
-        gap: 1rem;
-    }
-
-    left-sidebar .sidebar-stack .top-container, left-sidebar .sidebar-stack .bottom-container {
-        height: unset;
-        gap: 1rem;
-    }
-
-    left-sidebar .single-button-tall, left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-        width: 100%;
-    }
-
-    .single-button .button-text {
-        writing-mode: unset;
-        text-orientation: unset;
-        display: unset;
-        word-spacing: unset;
-        line-height: unset;
-        font-size: 1.25rem;
-        text-transform: capitalize;
-    }
-    
-    left-sidebar .sidebar-stack .bottom-container {
-        max-width: unset;
-        width: unset;
-    }
-    
-    left-sidebar .sidebar-stack .bottom-container {
-        max-width: unset;
-        width: unset;
-    }
-
-    .single-button-tall {
-        padding-bottom: 0.75rem;
-    }
-
-    .single-button-tall .color-strip {
-        height: 1rem;
-        margin-bottom: 0.75rem;
-    }
-
-    aside.sidebar-stack {
+    left-sidebar #home-page-sidebar {
         display: none;
+    }
+
+    left-sidebar #secondary-sidebar {
+        display: flex;
     }
 }
 
-@media screen and (max-height: 650px) {
+@media screen and (max-width: 700px), (max-height: 600px){
     left-sidebar {
-        background-image: none;
-        min-width: unset;
-        width: 15%;
-        min-width: 10rem;
+        max-width: 0;
     }
 
-    left-sidebar #left-sidebar-image {
-        display: block;
-    }
-
-    left-sidebar .single-button-tall, left-sidebar .left-bottom-elements .left-sidebar-lower-buttons {
-        width: 100%;
-    }
-
-    .single-button .button-text {
-        writing-mode: unset;
-        text-orientation: unset;
-        display: unset;
-        word-spacing: unset;
-        line-height: unset;
-        font-size: 1.25rem;
-        text-transform: capitalize;
-    }
-
-    .single-button, .single-button-tall {
-        padding: 0;
-    }
-
-    .color-strip {
+    left-sidebar #home-page-sidebar, left-sidebar #secondary-sidebar {
         display: none;
     }
 
-    .single-button, .toggle-vertical button {
-        height: 100%;
-    }
-
-    aside.sidebar-stack {
-        display: none;
+    left-sidebar #mobile-sidebar {
+        display: flex;
     }
 }

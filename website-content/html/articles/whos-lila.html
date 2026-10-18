@@ -13,22 +13,24 @@
     <script type="module" src="../../script/script.js" defer></script>
     </head>
 
-    <body id="article">
+    <body>
         <left-sidebar></left-sidebar>
 
-        <main>
-            <section class="article-header">
+        <article>
+            <header>
                 <h1 id="article-title">Who's Lila</h1>
                 <img src="../../assets/article-specific/WL-header.png" alt="An in game screenshot from Who's Lila. The left side of the screen shows an old pickup-style landline phone. The right shows a young man with a neutral expression. He has dark short hair. A green and blue duotone effect was applied to the image. The game naturally has a dithering effect.">
-                <div class="toggle-button toggle-horizontal box-shadow spoiler-options">
-                    <button id="spoilers-option" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
-                    <button id="hover-option" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
-                    <button id="no-spoilers-option" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
-                </div>
-                <h3 class="written-on">Written 06/01/26</h3>
-            </section>
 
-            <div id="main-review-content" class="spoilers">
+                <div effected-container="main" class="toggle-button toggle-horizontal box-shadow spoiler-options" type="spoiler-view">
+                    <button value="show" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
+                    <button value="hover" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
+                    <button value="hide" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
+                </div>
+
+                <h3 class="written-on">Written 06/01/26</h3>
+            </header>
+
+            <main spoiler-view="show">
                 <section>
                     <p>Unfortunately, we have come to the point where I have to write my first aimless and confused write up. Two games in.</p>
 
@@ -108,7 +110,9 @@
 
                     <p>I liked that the game took place in Detroit. Shoutout.</p>
                 </section>
-            </div>
-        </main>
+
+                <a href="#" class="back-to-top"><h4>^</h4></a>
+            </main>
+        </article>
     </body>
 </html>

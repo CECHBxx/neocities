@@ -1,32 +1,6 @@
 import { articleListArray } from "./data.js"
 
-let currentView = "grid-view";
-const backloggdURL = "scph1001";
-const backloggdLinkStart = `https://backloggd.com/u/${backloggdURL}/review`;
-
-const articleList = document.querySelector("#article-list");
-const listToggle = document.querySelector("#list-option");
-const gridToggle = document.querySelector("#grid-option");
-
-listToggle.addEventListener("click", (event) => {
-    switchView(gridToggle, listToggle, "list");
-});
-
-gridToggle.addEventListener("click", (event) => {
-    switchView(listToggle, gridToggle, "grid");
-});
-
-const switchView = (current, next, type) => {
-    if (currentView != `${type}-view`) {
-        next.classList.add("selected-toggle");
-        current.classList.remove("selected-toggle");
-        articleList.classList.remove(currentView);
-        currentView = `${type}-view`;
-        articleList.classList.add(currentView);
-
-        document.cookie = `view-preference=${type};`;
-    }
-}
+const articleList = document.querySelector("main");
 
 class PostListing {
     constructor(postData) {
@@ -51,14 +25,14 @@ class PostListing {
     createTab = () => {
         const linkToArticle = document.createElement("a");
         linkToArticle.classList.add("article-preview");
-        const linkToArticleContent =    `<div class="article-tab">
+        const linkToArticleContent =    `<section class="article-tab">
                                             <h2 class="article-title">${this.postData.title}</h2>
                                             <div class="article-date">
                                                 <p>${this.day[0]}</p><p>${this.day[1]}</p><p class="date-seperator">/</p>
                                                 <p>${this.month[0]}</p><p>${this.month[1]}</p><p class="date-seperator">/</p>
                                                 <p>${this.year[0]}</p><p>${this.year[1]}</p>
                                             </div>
-                                        </div>`;
+                                        </section>`;
 
         linkToArticle.insertAdjacentHTML("beforeend", linkToArticleContent);
 
@@ -68,41 +42,12 @@ class PostListing {
     }
 }
 
-const setListDefault = (cookieValue) => {
-    if (cookieValue === "list") {
-        listToggle.classList.add("selected-toggle")
-    } else {
-        cookieValue = "grid"
-        gridToggle.classList.add("selected-toggle");
-    }
-
-    currentView = `${cookieValue}-view`;
-    articleList.classList.add(currentView);
-}
-
 const setUpContent = () => {
     let length = articleListArray.length;
     for (let i = 0; i < length; i++) {
 
         let post = new PostListing(articleListArray[i]);
         articleList.insertAdjacentElement("beforeend", post.content);
-    }
-
-    setListDefault(fetchCookiePreference());
-}
-
-// repeat function from script.js but import / export stopped working on neocities
-
-const fetchCookiePreference = () => {
-    let cookieList = document.cookie.split(";");
-
-    for (let i = 0; i < cookieList.length; i++) {
-        if (cookieList[i].length < 1) break;
-
-        let cookieName = cookieList[i].split("=")[0].trim();
-        let cookieValue = cookieList[i].split("=")[1].trim();
-
-        if (cookieName === "view-preference") return cookieValue;
     }
 }
 

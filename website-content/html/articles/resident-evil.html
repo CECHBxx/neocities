@@ -16,19 +16,21 @@
     <body id="article">
         <left-sidebar></left-sidebar>
 
-        <main>
-            <section class="article-header">
+        <article>
+            <header>
                 <h1 id="article-title">[Sinister Voice] Resident Evil</h1>
                 <img src="../../assets/article-specific/RE1-header.png" alt="">
-                <div class="toggle-button toggle-horizontal box-shadow spoiler-options">
-                    <button id="spoilers-option" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
-                    <button id="hover-option" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
-                    <button id="no-spoilers-option" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
-                </div>
-                <h3 class="written-on">Written 06/19/26</h3>
-            </section>
 
-            <div id="main-review-content" class="spoilers">
+                <div effected-container="main" class="toggle-button toggle-horizontal box-shadow spoiler-options" type="spoiler-view">
+                    <button value="show" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
+                    <button value="hover" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
+                    <button value="hide" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
+                </div>
+
+                <h3 class="written-on">Written 06/19/26</h3>
+            </header>
+
+            <main spoiler-view="show">
 				<section>
 					<h2>Gameplay</h2>
 
@@ -121,7 +123,9 @@
 
                     <p><a-tab href="https://youtu.be/CZUwmfeHB58?si=hbHdBlNynPzCNujE">I like to think that these thoughts are my own, but I did watch through Noah Caldwell-Gervais's review after my Jill run and thought it was very well done! I'd like to list them as a source since I think that review helped me reflect on my own opinions and I worry I might just repeated what they said in terms of the mansion developing into the lab.</a-tab></p>
 				</section>
-            </div>
-        </main>
+
+                <a href="#" class="back-to-top"><h4>^</h4></a>
+            </main>
+        </article>
     </body>
 </html>

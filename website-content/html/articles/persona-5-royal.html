@@ -12,43 +12,37 @@
     <script type="module" src="../../script/script.js" defer></script>
     </head>
 
-    <body id="article">
+    <body>
         <left-sidebar></left-sidebar>
-        <main>
-            <section class="article-header">
+        <article>
+            <header>
                 <h1 id="article-title">PLEASE DON'T THINK LESS OF ME FOR MY BAD TASTE IN MY MOMENT OF WEAKNESS</h1>
                 <img src="../../assets/article-specific/P5R/P5R_header.png" alt="Promotion artwork for Persona 5. Three of the main characters (The player, Ryuji, and Ann) are in a classroom. The player character is facing towards the camera and sitting on top of a desk. Ryuji is sitting down at a desk and looking at the camera. Ann is leaning on top of a desk and facing towards the camera. The image is cropped to only focus on their faces. A green and blue duotone effect was applied to the image along with a halftone effect.">
-                <div class="toggle-button toggle-horizontal box-shadow spoiler-options">
-                    <button id="spoilers-option" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
-                    <button id="hover-option" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
-                    <button id="no-spoilers-option" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
+
+                <div effected-container="main" class="toggle-button toggle-horizontal box-shadow spoiler-options" type="spoiler-view">
+                    <button value="show" class="view-toggle selected-toggle"><div class="button-text">Show Spoilers</div></button>
+                    <button value="hover" class="view-toggle"><div class="button-text">Hover Tag Spoilers</div></button>
+                    <button value="hide" class="view-toggle"><div class="button-text">Hide Spoilers Completely</div></button>
                 </div>
+
                 <div class="backloggd-notice">
                     <div class="text-section-no-margin">
-                        <p>This review was copied from my Backloggd. You can find the original review <a-tab href="https://backloggd.com/u/scph1001/review/1541640/">here</a-tab>. I wrote it a while ago. Its not written very well, but it would be very draining to rewrite and I think I hit all the points I wanted to. Critically, <i>Persona 5</i> is a game that wants to make some kind of pro feminist statement, but it crumbles under the weight of its hypocrisy.</p>
-
                         <p>This review is spoiler heavy, but many sections of it are not. You can use the settings above to block out spoilers. If you choose the hover tag option, parts of this review may seem like a high clearance redacted document. If you choose to hide all spoilers, the writing may seem odd a choppy (because full segments are being removed).</p>
                     </div>
                 </div>
                 <h3 class="written-on">Written 04/17/24</h3>
-            </section>
+            </header>
 
-            <section class="directory-container">
-                <div class="right">
-                    <div class="text-section-no-margin">
-                        <p>Playing <i>Persona 5 Royal</i> is a semi enjoyable experience. The gameplay is robust and the audiovisual experience is wonderful.</p>
-
-                        <p><i>P5R</i> does unfortunately continue ATLUS's addiction of shooting themselves in the foot and being hypocritical against what they preach. The game has interesting perceptions about the world, but they often marred by low-brow execution or throwing women under the bus every chance they get.</p>
-
-                        <p>I gave the game 4/5 because there is something wrong with me. Objectively its a mess.</p>
+            <main spoiler-view="show">
+                <section class="directory-container">
+                    <div class="two-column">
+                        <div class="text-section-no-margin">
+                            <p>This review was copied from my Backloggd. You can find the original review <a-tab href="https://backloggd.com/u/scph1001/review/1541640/">here</a-tab>. I wrote it a while ago. Its not written very well, but it would be very draining to rewrite and I think I hit all the points I wanted to. Critically, <i>Persona 5</i> is a game that wants to make some kind of pro feminist statement, but it crumbles under the weight of its hypocrisy.</p>
+                        </div>
+                        <sidebar-directory></sidebar-directory>
                     </div>
-                </div>
-                <div class="left">
-                    <sidebar-directory></sidebar-directory>
-                </div>
-            </section>
+                </section>
 
-            <div id="main-review-content" class="spoilers">
                 <section>
                     <h2 id="gameplay-section">Gameplay</h2>
                     
@@ -262,7 +256,7 @@
                 </section>
 
                 <a href="#" class="back-to-top"><h4>^</h4></a>
-            </div>
-        </main>
+            </main>
+        </article>
     </body>
 </html>
