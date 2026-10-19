@@ -1,12 +1,6 @@
 let cookies = {style: null, view: null};
 let currentStyling = "standard";
 
-// let spoilerTagsToggle;
-// let showSpoilersToggle;
-// let dontShowSpoilersToggle;
-// let article;
-// let currentSpoilers;
-
 const isInvalid = (value) => {
     return (value == null || value == undefined)
 }
@@ -24,36 +18,6 @@ const switchView = (current, next, type) => {
     }
 }
 
-// const switchSpoilerView = (next, type) => {
-//     if (currentSpoilers != next) {
-//         article.classList = `article-content page-text-content ${type}`;
-//         next.classList.add("selected-toggle");
-//         currentSpoilers.classList.remove("selected-toggle");
-//         currentSpoilers = next;
-//     }
-// }
-
-// if (document.querySelector(".spoiler-options") != undefined) {
-//     spoilerTagsToggle = document.querySelector("#hover-option");
-//     dontShowSpoilersToggle = document.querySelector("#no-spoilers-option");
-//     showSpoilersToggle = document.querySelector("#spoilers-option");
-
-//     currentSpoilers = showSpoilersToggle;
-//     article = document.querySelector("#main-review-content");
-
-//     spoilerTagsToggle.addEventListener("click", () => {
-//         switchSpoilerView(spoilerTagsToggle, "spoiler-tags");
-//     });
-
-//     showSpoilersToggle.addEventListener("click", () => {
-//         switchSpoilerView(showSpoilersToggle, "spoilers");
-//     });
-
-//     dontShowSpoilersToggle.addEventListener("click", () => {
-//         switchSpoilerView(dontShowSpoilersToggle, "no-spoilers");
-//     });
-// }
-
 const fetchCookies = () => {
     let cookieList = document.cookie.split(";");
 
@@ -67,7 +31,7 @@ const fetchCookies = () => {
         if (cookieName === "view-preference") cookies.view = cookieValue;
     }
 
-    if (cookies.style == null) cookies.style = "standard";
+    if (cookies.style == null || cookies.style == "standard") cookies.style = "default";
     if (cookies.view == null) cookies.view = "grid";
 }
 
