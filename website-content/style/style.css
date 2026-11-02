@@ -136,6 +136,12 @@ left-sidebar, main, aside {
     height: 100%;
 }
 
+left-sideber {
+    width: 13%;
+    flex-shrink: 0;
+    height: 90vh;
+}
+
 left-sidebar #home-page-sidebar, left-sidebar #secondary-sidebar {
     display: none;
     height: 100%;
@@ -454,13 +460,13 @@ body[style="accessible"] .image-link-button .button-text {
     left-sidebar #home-page-sidebar {
         display: flex;
     }
+
+    left-sidebar #secondary-sidebar {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1600px), (max-height: 800px) {
-    body:not(#home-page) left-sidebar {
-        min-width: 230px;
-    }
-
     body#home-page left-sidebar {
         width: 15%;
     }

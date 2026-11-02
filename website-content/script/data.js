@@ -1,6 +1,12 @@
 export let articleListArray = 
 [
     {
+        title: "Dragon Quest II",
+        createdDate: "11/01/26",
+        topic: ["Dragon Quest", "Dragon Quest II", "DQ", "DQII"],
+        mentioned: ["Shin Megami Tensei", "SMT"]
+    },
+    {
         title: "Hotel Dusk: Room 215",
         createdDate: "10/14/26",
         topic: ["Hotel Dusk: Room 215", "Hotel Dusk"],

@@ -1,21 +1,19 @@
 body {
     margin-bottom: 0rem;
-    gap: 2.5rem;
+    gap: 5rem;
 }
 
 left-sidebar {
     height: 90vh;
     position: sticky;
     top: 5vh;
-    width: 230px;
 }
 
 left-sidebar #secondary-sidebar {
-    display: flex;
     height: 90vh;
 }
 
-left-sidebar #home-page-sidebar, #secondary-sidebar {
+left-sidebar #secondary-sidebar #backloggd-link, left-sidebar #secondary-sidebar #info-link {
     display: none;
 }
 
@@ -295,6 +293,13 @@ main[spoiler-view="hide"] .spoilers, .no-spoilers .single-line {
 }
 
 /* MEDIA QUERIES ================================================================================================================== */
+
+@media screen and (max-width: 1600px) {
+    left-sidebar {
+        width: 13%;
+        flex-shrink: 0;
+    }
+} 
 
 @media screen and (max-width: 1450px) {
     .footnote .footnote-text { width: 300px; }
